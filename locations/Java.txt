@@ -1,0 +1,7 @@
+Java
+Java is the third planet of the Code system.
+space1.txt
+true
+5
+8
+J

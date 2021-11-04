@@ -1,0 +1,7 @@
+Rust
+Rust is steel
+planet1.txt
+false
+7
+5
+R

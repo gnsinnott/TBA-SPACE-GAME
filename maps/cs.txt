@@ -1,0 +1,9 @@
+Compile system
+You are finally in space, it's time to explore!
+10
+10
+3
+*
+C++.txt
+Java.txt
+Rust.txt

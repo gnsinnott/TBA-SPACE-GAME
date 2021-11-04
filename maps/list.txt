@@ -1,0 +1,9 @@
+Trial 1
+Trial 1 is a dark forest planet, animal sounds echo from deep in the jungle. Your scans show a Settlement to the north and a mysterious energy source to the south
+10
+10
+3
+-
+C,4,4
+S,0,3
+E,8,7
