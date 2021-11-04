@@ -1,26 +1,26 @@
 //CSCI1300 Fall 2021
 //Author: Pandora Down and Greg Sinnott
 //Recitation 112- Maria Stull
-//Project 3  
-
+//Project 3 
+#include <iostream>
+#include "spaceShip.h"
 
 using namespace std;
 
-
-    SpaceShip::SpaceShip()
+ SpaceShip::SpaceShip()
     {
         name = "";
         fuel = 0;
-        gasMilage = 0;
-        attakPoints = 0;
+        gasMileage = 0;
+        attackPoints = 0;
         defensePoints = 0;
     }
-    SpaceShip::SpaceShip(string n, int f, int g, int attakPoints, int defensePoints)
+    SpaceShip::SpaceShip(string n, int f, int g, int a, int d)
     {
         name = n;
         fuel = f;
-        gasMilage = g;
-        attakPoints = a;
+        gasMileage = g;
+        attackPoints = a;
         defensePoints = d;
     }
     void SpaceShip::setName(string n)
@@ -31,9 +31,9 @@ using namespace std;
     {
         fuel = f;
     }
-    void SpaceShip::setGasMiliage(int g)
+    void SpaceShip::setGasMileage(int g)
     {
-        gasMiliage = g;
+        gasMileage = g;
     }
     void SpaceShip::setAttack(int a)
     {
@@ -53,13 +53,13 @@ using namespace std;
     {
         return fuel;
     }
-    int SpaceShip::getGasMiliage()
+    int SpaceShip::getGasMileage()
     {
-        return gasMiliage;
+        return gasMileage;
     }
     int SpaceShip::getAttack()
     {
-        return attakPoints;
+        return attackPoints;
     }
     int SpaceShip::getDefense()
     {

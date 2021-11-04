@@ -14,21 +14,21 @@ class Player
     public:
     //constructor
     Player();
-    Player(string n, const int startingAge);
+    Player(string n, int sa);
     
     //setters
     void setName(string n); 
-    void setStartingAge(string sa);
+    void setStartingAge(int sa);
     
     //getters
-    string getName() const; 
-    int getStartingAge() const;
-    int getAge() const;
+    string getName(); 
+    int getStartingAge();
+    int getAge();
     int getMoney();
 
     private:
     string name;
-    const int startingAge;
+    int startingAge;
     int age;
     int money;
 };
