@@ -14,21 +14,27 @@ class SpaceShip
     public:
     //constructor
     SpaceShip();
-    SpaceShip(string n, int fuel, int gasMiliage);
+    SpaceShip(string n, int f, int gm, int a, int d);
     
     //setters
     void setName(string n); 
     void setFuel(int f);
     void setGasMiliage(int g);
+    void setAttack(int a);
+    void setDefense(int d);
     
     //getters
     string getName(); 
     int getFuel();
-    int setGasMiliage();
+    int getGasMiliage();
+    int getAttack();
+    int getDefense();
 
     private:
     string name;
     int fuel;
     int gasMilage;
+    int attackPoint;
+    int defensePoints;
 };
 #endif
