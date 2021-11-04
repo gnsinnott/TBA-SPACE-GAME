@@ -19,22 +19,22 @@ class SpaceShip
     //setters
     void setName(string n); 
     void setFuel(int f);
-    void setGasMiliage(int g);
+    void setGasMileage(int g);
     void setAttack(int a);
     void setDefense(int d);
     
     //getters
     string getName(); 
     int getFuel();
-    int getGasMiliage();
+    int getGasMileage();
     int getAttack();
     int getDefense();
 
     private:
     string name;
     int fuel;
-    int gasMilage;
-    int attackPoint;
+    int gasMileage;
+    int attackPoints;
     int defensePoints;
 };
 #endif
