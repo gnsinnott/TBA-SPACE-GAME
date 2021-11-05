@@ -60,7 +60,6 @@ int Enemy::getDefense() const{
 }
 int Enemy::attack() const{
     int offset;
-    srand(time(NULL));
-    offset = rand() % attackRange;
+    offset = rand() % (2*attackRange+1);
     return (baseAttack-attackRange+offset);
 }
