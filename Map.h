@@ -24,8 +24,11 @@ class Map {
     void setDescription(std::string d);
     void setRandom(bool r);
     void generateMap(std::string);
+    bool setPlayerLoc(int x, int y);
     void setLocationCount(int c);
     void setLocation(int i, Location location);
+    int travelTo(std::string destination);
+
 
     // accessors/getters
     std::string getName() const;
@@ -36,7 +39,7 @@ class Map {
     std::string generateMap() const;
     void printMap() const;
     int getLocationCount() const;
-    void printLegend() const;
+    void printLegend(bool p) const;
     Location getLocation(int i) const;
 
     private:
@@ -47,10 +50,11 @@ class Map {
     int width;
     int height;
     bool random;
+    char filler;
     std::string display[20];
     int locationCount;
     Location locations[5];
-
+    int playerLoc[2] = {0,0}; // x y location of player
 };
 
 #endif

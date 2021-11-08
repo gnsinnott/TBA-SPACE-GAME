@@ -14,6 +14,7 @@ class Enemy {
 
     // constructors
     Enemy(); // Default Constructor
+    Enemy(std::string n, std::string d, std::string t, int hp, int att, int attr, int def);
 
 
     // mutators/setters
