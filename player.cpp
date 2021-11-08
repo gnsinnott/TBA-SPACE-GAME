@@ -32,6 +32,10 @@ void Player::setStartingAge(int sa)
 {
 startingAge = sa;
 }
+void Player::setMoney(int m)
+{
+    money = m;
+}
 
 //getters
 string Player::getName()
