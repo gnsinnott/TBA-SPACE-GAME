@@ -19,6 +19,7 @@ class Player
     //setters
     void setName(string n); 
     void setStartingAge(int sa);
+    void setMoney(int m);
     
     //getters
     string getName(); 
