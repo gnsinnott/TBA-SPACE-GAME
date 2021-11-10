@@ -24,11 +24,14 @@ int main(){
             cin >> destination;
             if (1 == map.travelTo(destination)){
                 validLocation = true;
-
+            }
+            if (int x = map.travelTo(destination) > 1){
+                filename = map.getLocation(x-1).getMapFile();
+                map.setFile(filename);
+                map.generateMap(filename);
             }
         }
         while(!validLocation);
-
     }
     while(destination != "Q");
     return 0;

@@ -82,7 +82,7 @@ int Map::travelTo(string destination){
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
                 //filename = getLocation(i).getMapFile(); // Send location to somewhere, not sure yet how to move between maps
-                return 1;
+                return 1+i;
             }
         }
         cout << "Invalid destination" << endl;
