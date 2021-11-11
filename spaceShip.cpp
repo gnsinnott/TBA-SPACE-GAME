@@ -7,42 +7,41 @@
 
 using namespace std;
 
- SpaceShip::SpaceShip()
-    {
-        name = "";
-        fuel = 0;
-        gasMileage = 0;
-        attackPoints = 0;
-        defensePoints = 0;
-    }
-    SpaceShip::SpaceShip(string n, int f, int g, int a, int d)
-    {
-        name = n;
-        fuel = f;
-        gasMileage = g;
-        attackPoints = a;
-        defensePoints = d;
-    }
-    void SpaceShip::setName(string n)
-    {
-       name = n; 
-    } 
-    void SpaceShip::setFuel(int f)
-    {
-        fuel = f;
-    }
-    void SpaceShip::setGasMileage(int g)
-    {
-        gasMileage = g;
-    }
-    void SpaceShip::setAttack(int a)
-    {
-        attackPoints = a;
-    }
-    void SpaceShip::setDefense(int d)
-    {
-        attackPoints = d;
-    }
+SpaceShip::SpaceShip(){
+    name = "";
+    fuel = 0;
+    gasMileage = 0;
+    attackPoints = 0;
+    defensePoints = 0;
+}
+SpaceShip::SpaceShip(string n, int f, int g, int a, int d){
+    name = n;
+    fuel = f;
+    gasMileage = g;
+    attackPoints = a;
+    defensePoints = d;
+}
+void SpaceShip::setName(string n){
+    name = n; 
+} 
+void SpaceShip::setFuel(int f){
+    fuel = f;
+}
+void SpaceShip::setGasMileage(int g){
+    gasMileage = g;
+}
+void SpaceShip::setHp(int h){
+    hp = h;
+}
+void SpaceShip::setBaseAttack(int a){
+    baseAttack = a;
+}
+void SpaceShip::setAttackRange(int r){
+    attackRange = r;
+}
+void SpaceShip::setDefense(int d){
+    defense = d;
+}
     
     //getters
     string SpaceShip::getName()

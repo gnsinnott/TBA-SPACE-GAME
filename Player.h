@@ -21,6 +21,7 @@ class Player
     void setStartingAge(int sa);
     void setMoney(int m);
     void setHp(int hp);
+    void setAge(int a);
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
     void setDefense(int defense);
@@ -33,7 +34,7 @@ class Player
     int getAge();
     int getMoney();
     int getHp() const;
-    int getbaseAttack() const;
+    int getbaseAttack();
     int getAttackRange() const;
     int getDefense() const;
     int attack() const;

@@ -9,8 +9,46 @@
 
 using namespace std;
 
-bool attackPlayer(Player player, Enemy enemy1)
+void attackPlayer(Player player, Enemy enemy)
 {
-while(player.gethp() )
-if(player.attack > )
+while(player.getHp() > 0 && enemy.getHp() > 0)
+{
+   enemy.setHp(enemy.getHp() - player.attack());
+   if(enemy.getHp() < 0)
+   {
+    player.setBaseAttack(player.getbaseAttack() ++);
+    cout << "You have won this battle" << endl;
+    return;
+   } 
+   player.setHp(player.getHp() - enemy.attack());
+   if(player.getHp() < 0)
+   {
+    player.setAge(player.getAge() ++);
+    cout << "You have lost this battle" << endl;
+
+    return;
+   }  
 }
+}
+void attackPlayer(Player player, Enemy enemy, SpaceShip ship)
+{
+while(player.getHp() > 0 && enemy.getHp() > 0)
+{
+   enemy.setHp(enemy.getHp() - player.attack());
+   if(enemy.getHp() < 0)
+   {
+    player.setBaseAttack(player.getbaseAttack() ++);
+    cout << "You have won this battle" << endl;
+    return;
+   } 
+   player.setHp(player.getHp() - enemy.attack());
+   if(player.getHp() < 0)
+   {
+    player.setAge(player.getAge() ++);
+    cout << "You have lost this battle" << endl;
+
+    return;
+   }  
+}
+}
+
