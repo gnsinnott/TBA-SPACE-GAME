@@ -40,17 +40,20 @@ void Player::setMoney(int m)
 //getters
 string Player::getName()
 {
-return name;
+    return name;
 } 
 int Player::getStartingAge()
 {
-return startingAge;
+    return startingAge;
 }
 int Player::getAge()
 {
-return age;
+    return age;
 }
 int Player::getMoney()
 {
-return money;
+    return money;
+}
+int Player::getIncome(){
+    return income;
 }

@@ -20,17 +20,20 @@ class Player
     void setName(string n); 
     void setStartingAge(int sa);
     void setMoney(int m);
+    void setIncome(int a);
     
     //getters
     string getName(); 
     int getStartingAge();
     int getAge();
     int getMoney();
+    int getIncome();
 
     private:
     string name;
     int startingAge;
     int age;
     int money;
+    int income;
 };
 #endif

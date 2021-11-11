@@ -17,18 +17,17 @@ class Game {
     Game(std::string n, Location l); // Paramaterized Constructor
 
     // mutators/setters
-    void newGame(std::string n, std::string s);
+    void newGame();
 
     // accessors/getters
     void mainMenu();
-    void printMenu(std::string t, std::string c[], int s);
+    int printMenu(std::string t, std::string c[], int s);
     void newLocation(Location l);
+    void play();
 
     private:
-    std::string playerName;
     Location youAreHere;
     Player player;
     SpaceShip ship;
 };
-
 #endif
