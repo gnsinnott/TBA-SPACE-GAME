@@ -51,15 +51,46 @@ void Game::newGame(){
     cout << "Age: " << player.getAge() << endl;
     cout << "Now it's time to pick your starting ship" << endl;
     string ships[] = {"Falcon", "Serenity", "Enterprise", "Atlantia"};
-    ship.setName(ships[printMenu("Ship selection", ships, 4)]);
+    ship.setName(ships[printMenu("Choose a ship", ships, 4)]);
     cout << "Welcome aboard the " << ship.getName() << endl;
+    if (ship.getName() == "Falcon"){
+        ship.setBaseAttack(5);
+        ship.setAttackRange(1);
+        ship.setDefense(8);
+        ship.setFuel(100);
+        ship.setGasMileage(10);
+        ship.setHp(50);
+    }
+    else if (ship.getName() == "Serenity"){
+        ship.setBaseAttack(7);
+        ship.setAttackRange(2);
+        ship.setDefense(5);
+        ship.setFuel(70);
+        ship.setGasMileage(5);
+        ship.setHp(40);
+    }
+    else if (ship.getName() == "Enterprise"){
+        ship.setBaseAttack(7);
+        ship.setAttackRange(0);
+        ship.setDefense(7);
+        ship.setFuel(70);
+        ship.setGasMileage(8);
+        ship.setHp(60);
+    }
+    else if (ship.getName() == "Atlantia"){
+        ship.setBaseAttack(4);
+        ship.setAttackRange(3);
+        ship.setDefense(5);
+        ship.setFuel(200);
+        ship.setGasMileage(3);
+        ship.setHp(100);
+    }
 }
 int Game::printMenu(string title, string choices[], int size){
     string input;
     int choice = 0;
     cout << title << endl;
     do {
-        cout << "What would you like to do?" << endl;
         for (int i = 0; i < size; i++){
             cout << i+1 << ") " << choices[i] << endl; 
         }
