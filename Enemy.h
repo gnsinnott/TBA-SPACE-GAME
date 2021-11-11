@@ -7,6 +7,8 @@
 #define ENEMY_H
 
 #include<string>
+#include"Player.h"
+#include"spaceShip.h"
 
 class Enemy {
 
@@ -25,6 +27,8 @@ class Enemy {
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
     void setDefense(int defense);
+    bool attackPlayer(Player player, Enemy enemy);
+    bool attackPlayer(Player player, Enemy enemy, SpaceShip ship);
 
     // accessors/getters
     std::string getName() const;

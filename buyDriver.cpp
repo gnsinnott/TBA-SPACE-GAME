@@ -7,20 +7,23 @@
 
 using namespace std;
 
-int buy(string item, int price, Player player)
+bool buy(string item, int price, Player player)
 {
     int playerMoney = player.getMoney();
     if(price > playerMoney)
-    {
-       cout << "\xF0\x9F\x98\x96" << endl; 
-       cout << "You do not have enough money to buy this" << endl;
-       return playerMoney;
+    { 
+       cout << "You have $ " << player.getMoney() << "." << endl;
+       cout << "You do not have enough money to buy " << item << " \xF0\x9F\x98\x96." << endl;
+       return false;
+    
     }
     else
     {
         cout << "You bought " << item << "." << endl;
         player.setMoney(playerMoney - price);
-        return player.getMoney();
+        cout << "You have $ " << player.getMoney() << "." << endl;
+        return true;
+        
     }
 }
 
