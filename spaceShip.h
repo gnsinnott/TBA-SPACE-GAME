@@ -20,21 +20,28 @@ class SpaceShip
     void setName(string n); 
     void setFuel(int f);
     void setGasMileage(int g);
-    void setAttack(int a);
-    void setDefense(int d);
-    
+    void setHp(int hp);
+    void setBaseAttack(int attack);
+    void setAttackRange(int range); // Damage = baseAttack +- numbers in range
+    void setDefense(int defense);
     //getters
     string getName(); 
     int getFuel();
     int getGasMileage();
-    int getAttack();
-    int getDefense();
+    int getHp() const;
+    int getbaseAttack() const;
+    int getAttackRange() const;
+    int getDefense() const;
+    int attack() const;
 
     private:
     string name;
     int fuel;
     int gasMileage;
-    int attackPoints;
-    int defensePoints;
+    int hp;
+    int baseAttack;
+    int attackRange;
+    int defense;
+
 };
 #endif
