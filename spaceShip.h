@@ -14,7 +14,7 @@ class SpaceShip
     public:
     //constructor
     SpaceShip();
-    SpaceShip(string n, int f, int g, int a, int d);
+    SpaceShip(string n, int f, int g, int hp, int ba, int ar, int d);
     
     //setters
     void setName(string n); 

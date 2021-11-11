@@ -11,15 +11,20 @@ SpaceShip::SpaceShip(){
     name = "";
     fuel = 0;
     gasMileage = 0;
-    attackPoints = 0;
-    defensePoints = 0;
+    hp = 0;
+    baseAttack = 0;
+    attackRange = 0;
+    defense = 0;
+    
 }
-SpaceShip::SpaceShip(string n, int f, int g, int a, int d){
+SpaceShip::SpaceShip(string n, int f, int g, int hp, int ba, int ar, int d){
     name = n;
     fuel = f;
     gasMileage = g;
-    attackPoints = a;
-    defensePoints = d;
+    hp = hp;
+    baseAttack = ba;
+    attackRange = ar;
+    defense = d;   
 }
 void SpaceShip::setName(string n){
     name = n; 
