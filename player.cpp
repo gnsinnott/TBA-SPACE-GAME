@@ -10,31 +10,42 @@ using namespace std;
 //constructor
 Player::Player()
 {
-name = "";
-startingAge = 0;
-age = startingAge;
-money = 0;
+    name = "";
+    startingAge = 0;
+    age = startingAge;
+    money = 0;
+    hp = 10;
+    baseAttack = 3;
+    attackRange = 1;
+    defense = 3;
 }
 Player::Player(string n, int sa)
 {
-name = "";
-startingAge = sa;
-age = sa;
-money = sa*100;
+    name = "";
+    startingAge = sa;
+    age = sa;
+    money = sa*100;
 }
 
 //setters
 void Player::setName(string n)
 {
-name = n;
+    name = n;
 } 
 void Player::setStartingAge(int sa)
 {
-startingAge = sa;
+    startingAge = sa;
+    age = sa;
+    money = sa * 100;
+    income = sa * 10;
 }
 void Player::setMoney(int m)
 {
     money = m;
+}
+void Player::setIncome(int a)
+{
+    income = a * 10;
 }
 void Player::setHp(int h){
     hp = h;
@@ -56,15 +67,13 @@ bool buy(string item, int price, Player player)
        cout << "You have $ " << player.getMoney() << "." << endl;
        cout << "You do not have enough money to buy " << item << " \xF0\x9F\x98\x96." << endl;
        return false;
-    
     }
     else
     {
         cout << "You bought " << item << "." << endl;
         player.setMoney(playerMoney - price);
         cout << "You have $ " << player.getMoney() << "." << endl;
-        return true;
-        
+        return true;  
     }
 }
 
@@ -87,7 +96,6 @@ int Player::getMoney()
 }
 int Player::getIncome(){
     return income;
-return money;
 }
 int Player::getHp() const
 {

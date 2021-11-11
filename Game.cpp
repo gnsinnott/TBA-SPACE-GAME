@@ -46,7 +46,13 @@ void Game::newGame(){
             cout << "Invalid input." << endl;
         }
     }
-    while(!validAge); 
+    while(!validAge);
+    cout << "Name: " << player.getName() << endl;
+    cout << "Age: " << player.getAge() << endl;
+    cout << "Now it's time to pick your starting ship" << endl;
+    string ships[] = {"Falcon", "Serenity", "Enterprise", "Atlantia"};
+    ship.setName(ships[printMenu("Ship selection", ships, 4)]);
+    cout << "Welcome aboard the " << ship.getName() << endl;
 }
 int Game::printMenu(string title, string choices[], int size){
     string input;
