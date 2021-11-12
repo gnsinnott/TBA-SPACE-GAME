@@ -6,7 +6,7 @@
 #include "spaceShip.h"
 
 using namespace std;
-
+//constructors
 SpaceShip::SpaceShip(){
     name = "";
     fuel = 0;
@@ -26,6 +26,7 @@ SpaceShip::SpaceShip(string n, int f, int g, int hp, int ba, int ar, int d){
     attackRange = ar;
     defense = d;   
 }
+//setters
 void SpaceShip::setName(string n){
     name = n; 
 } 
@@ -70,6 +71,7 @@ int SpaceShip::getAttackRange() const{
 int SpaceShip::getDefense() const{
     return defense;
 }
+// this function generates the damage points of an attaks randomly based on Damage = baseAttack +- numbers in attack range
 int SpaceShip::attack() const{
     int offset;
     offset = rand() % (2*attackRange+1);

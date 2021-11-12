@@ -59,6 +59,10 @@ void Player::setAttackRange(int r){
 void Player::setDefense(int d){
     defense = d;
 }
+void Player::setAge(int a)
+{
+    age = a;
+}
 bool buy(string item, int price, Player player)
 {
     int playerMoney = player.getMoney();
@@ -110,6 +114,7 @@ int Player::getAttackRange(){
 int Player::getDefense(){
     return defense;
 }
+// this function generates the damage points of an attaks randomly based on Damage = baseAttack +- numbers in attack range
 int Player::attack(){
     int offset;
     offset = rand() % (2*attackRange+1);
