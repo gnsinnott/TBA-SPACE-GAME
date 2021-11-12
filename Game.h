@@ -6,6 +6,7 @@
 #include"Map.h"
 #include"Location.h"
 #include"Enemy.h"
+#include<vector>
 #include<string>
 
 class Game {
@@ -18,16 +19,24 @@ class Game {
 
     // mutators/setters
     void newGame();
+    void setLocation(Location l);
+    int generateLocations();
+    int generateMaps();
+
 
     // accessors/getters
     void mainMenu();
     int printMenu(std::string t, std::string c[], int s);
-    void newLocation(Location l);
+    void newLocation(string l);
     void play();
 
     private:
+    const int size = 20;
+    vector <Location> locations;
+    vector <Map> maps;
     Location youAreHere;
     Player player;
     SpaceShip ship;
+    Map map;
 };
 #endif

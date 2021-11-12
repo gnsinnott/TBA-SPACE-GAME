@@ -4,6 +4,7 @@
 #include"Map.h"
 #include"Location.h"
 #include"Enemy.h"
+#include<fstream>
 #include<iostream>
 #include<string>
 using namespace std;
@@ -16,6 +17,38 @@ Game::Game(){
 void Game::mainMenu(){
     cout << "TBA SPACE GAME" << endl;
     cout << "--------------" << endl;
+}
+int Game::generateLocations(){
+    ifstream locationList;
+    string line;
+    locationList.open("locations/list.txt");
+    if (locationList.is_open()){
+        while(getline(locationList, line)){
+            Location temp;
+            temp.generateLocation(line);
+            locations.push_back(temp);
+        }
+    } else {
+        return -1;
+    }
+    locationList.close();
+    cout << "Locations loaded: " << locations.size() << endl;
+    return locations.size();
+}
+int Game::generateMaps(){
+    for (int i = 0; i < locations.size(); i++){
+        Map temp;
+        temp.setFile(locations[i].getMapFile());
+        temp.generateMap();
+        maps.push_back(temp);
+    }
+    if (maps.size() == 0){
+        cout << "No locations added";
+        return -1;
+    } else {
+        cout << "Maps loaded: " << maps.size() << endl;
+        return maps.size();
+    }
 }
 void Game::newGame(){
     string input;
@@ -111,6 +144,16 @@ int Game::printMenu(string title, string choices[], int size){
     }
     while(true);
 }
+void Game::newLocation(string l){ // Takes name of location
+    string fileName = l + ".txt"; // add .txt to location to specify file name
+    youAreHere.generateLocation(fileName); // Generate location
+    map.setFile(youAreHere.getMapFile()); // Set map file name from location
+    map.generateMap(); // Generate map from map file
+
+}
+
 void Game::play(){
-        
+    map.setFile("cs.txt");
+    map.generateMap();
+    
 }

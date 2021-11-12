@@ -23,7 +23,7 @@ class Map {
     void setSize(int w, int h);
     void setDescription(std::string d);
     void setRandom(bool r);
-    void generateMap(std::string);
+    void generateMap();
     bool setPlayerLoc(int x, int y);
     void setLocationCount(int c);
     void setLocation(int i, Location location);

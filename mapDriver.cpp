@@ -18,7 +18,7 @@ int main(){
     int row = 0;
     bool validLocation = false;
     map.setFile(filename);
-    map.generateMap(filename);
+    map.generateMap();
     playerMarked = map.setPlayerLoc(column,row);
     do {
         map.printMap();
@@ -32,7 +32,7 @@ int main(){
             if (int x = map.travelTo(destination) > 1){
                 filename = map.getLocation(x-1).getMapFile();
                 map.setFile(filename);
-                map.generateMap(filename);
+                map.generateMap();
             }
         }
         while(!validLocation);

@@ -101,7 +101,7 @@ int Player::getHp() const
 {
     return hp;
 }
-int Player::getbaseAttack() const{
+int Player::getbaseAttack(){
     return baseAttack;
 }
 int Player::getAttackRange() const{

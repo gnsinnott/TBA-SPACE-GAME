@@ -117,7 +117,7 @@ int Map::travelTo(string destination){
     }
 }
 // Generate map from file
-void Map::generateMap(std::string filename){
+void Map::generateMap(){
     ifstream mapFile; // Create filestream
     std::string line;
     if(random){
