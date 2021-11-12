@@ -6,6 +6,7 @@ using namespace std;
 Enemy::Enemy() {
 
 }
+//constructor
 Enemy::Enemy(string n, string d, string t, int h, int att, int attr, int def){
     name = n;
     description = d;
@@ -15,6 +16,7 @@ Enemy::Enemy(string n, string d, string t, int h, int att, int attr, int def){
     attackRange = attr;
     defense = def;
 }
+//setter
 void Enemy::setName(string n){
     name = n;
 }
@@ -36,7 +38,7 @@ void Enemy::setAttackRange(int r){
 void Enemy::setDefense(int d){
     defense = d;
 }
-
+//getter
 string Enemy::getName() const{
     return name;
 }
