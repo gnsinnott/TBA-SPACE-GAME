@@ -12,6 +12,7 @@ using namespace std;
 Location::Location(){
 
 }
+// Setters
 void Location::setName(string n){
     name = n;
 }
@@ -28,11 +29,12 @@ void Location::setCoordinates(int x, int y){
     xLoc = x;
     yLoc = y;
 }
+// Generate location from text file
 void Location::generateLocation(string filename){
     ifstream locationFile;
     string line;
-    locationFile.open("locations/" + filename);
-    if (locationFile.is_open()){
+    locationFile.open("locations/" + filename); // Open file for location
+    if (locationFile.is_open()){ // Check if file can be opened, sets location variables from file lines
         getline(locationFile, name);
         getline(locationFile, description);
         getline(locationFile, mapFile);
@@ -50,6 +52,7 @@ void Location::generateLocation(string filename){
         mapKey = line[0];
     }
 }
+// Getters
 string Location::getName() const{
     return name;
 }

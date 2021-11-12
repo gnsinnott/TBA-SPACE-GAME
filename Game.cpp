@@ -9,6 +9,7 @@
 #include<string>
 using namespace std;
 
+// Default constructor need to evaluate use
 Game::Game(){
 
 }
@@ -18,38 +19,40 @@ void Game::mainMenu(){
     cout << "TBA SPACE GAME" << endl;
     cout << "--------------" << endl;
 }
+// Generate all locations in game and add to vector of locations
 int Game::generateLocations(){
     ifstream locationList;
     string line;
-    locationList.open("locations/list.txt");
+    locationList.open("locations/list.txt"); // Master file of locations
     if (locationList.is_open()){
-        while(getline(locationList, line)){
-            Location temp;
-            temp.generateLocation(line);
-            locations.push_back(temp);
+        while(getline(locationList, line)){ // Iterate over lines in file to create locations
+            Location temp; 
+            temp.generateLocation(line); // pass line which is name of txt file containing location to function
+            locations.push_back(temp); // add location to vector of locations in game
         }
     } else {
-        return -1;
+        return -1; // If can't open file return -1
     }
     locationList.close();
-    cout << "Locations loaded: " << locations.size() << endl;
-    return locations.size();
+    cout << "Locations loaded: " << locations.size() << endl; // Print out number of locations loaded for testing purposes
+    return locations.size(); // Return number of locations
 }
+// Generate all maps in game and add to vector of maps
 int Game::generateMaps(){
-    for (int i = 0; i < locations.size(); i++){
+    for (int i = 0; i < locations.size(); i++){ // Iterate over locations vector
         Map temp;
-        temp.setFile(locations[i].getMapFile());
-        temp.generateMap();
-        maps.push_back(temp);
+        temp.setFile(locations[i].getMapFile()); // Set map file from location
+        temp.generateMap(); // Generate the map
+        maps.push_back(temp); // Add map to vector of maps in game
     }
-    if (maps.size() == 0){
-        cout << "No locations added";
-        return -1;
+    if (maps.size() == 0){ // If no maps added return -1
+        return -1; 
     } else {
-        cout << "Maps loaded: " << maps.size() << endl;
-        return maps.size();
+        cout << "Maps loaded: " << maps.size() << endl; // Print out number of maps loaded for testing purposes
+        return maps.size(); // Return number of maps
     }
 }
+// Begins new game, sets player info
 void Game::newGame(){
     string input;
     bool validAge = false;
@@ -66,7 +69,7 @@ void Game::newGame(){
         try // Try to convert string to integer
         {
             age = stoi(input);
-            if (age > 15 && age < 96){
+            if (age > 15 && age < 96){ // Verify age is in appropriate range
                 player.setStartingAge(age);
                 validAge = true;
             } else {
@@ -79,13 +82,14 @@ void Game::newGame(){
             cout << "Invalid input." << endl;
         }
     }
-    while(!validAge);
+    while(!validAge); // Loops until age is set to appropriate value
     cout << "Name: " << player.getName() << endl;
     cout << "Age: " << player.getAge() << endl;
     cout << "Now it's time to pick your starting ship" << endl;
-    string ships[] = {"Falcon", "Serenity", "Enterprise", "Atlantia"};
-    ship.setName(ships[printMenu("Choose a ship", ships, 4)]);
-    cout << "Welcome aboard the " << ship.getName() << endl;
+    string ships[] = {"Falcon", "Serenity", "Enterprise", "Atlantia"}; // Array of ship choices
+    ship.setName(ships[printMenu("Choose a ship", ships, 4)]); // Create ship choice menu
+    cout << "Welcome aboard the " << ship.getName() << endl; // Welcome player aboard ship
+    // Set ship stats, will probably be reworked but good enough for testing purposes
     if (ship.getName() == "Falcon"){
         ship.setBaseAttack(5);
         ship.setAttackRange(1);
@@ -119,13 +123,14 @@ void Game::newGame(){
         ship.setHp(100);
     }
 }
+// Prints menu from array of strings
 int Game::printMenu(string title, string choices[], int size){
     string input;
     int choice = 0;
-    cout << title << endl;
+    cout << title << endl; // Print menu title
     do {
-        for (int i = 0; i < size; i++){
-            cout << i+1 << ") " << choices[i] << endl; 
+        for (int i = 0; i < size; i++){ // Iterate over array printing each option
+            cout << i+1 << ") " << choices[i] << endl; // Print number of option and option
         }
         getline(cin, input);
         try // Try to convert string to integer
@@ -136,7 +141,7 @@ int Game::printMenu(string title, string choices[], int size){
         {
         }
         if(choice != 0 && choice <= size){
-            return choice-1;
+            return choice-1; // Return choice indexed back to 0
         }
         else{
             cout << "Invalid input." << endl;
@@ -144,6 +149,7 @@ int Game::printMenu(string title, string choices[], int size){
     }
     while(true);
 }
+// Sets new location, needs to be reworked
 void Game::newLocation(string l){ // Takes name of location
     string fileName = l + ".txt"; // add .txt to location to specify file name
     youAreHere.generateLocation(fileName); // Generate location
@@ -151,7 +157,7 @@ void Game::newLocation(string l){ // Takes name of location
     map.generateMap(); // Generate map from map file
 
 }
-
+// Starts play of game, needs to be reworked
 void Game::play(){
     map.setFile("cs.txt");
     map.generateMap();
