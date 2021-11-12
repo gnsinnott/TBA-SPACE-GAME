@@ -35,11 +35,11 @@ class Player
     int getAge();
     int getMoney();
     int getIncome();
-    int getHp() const;
+    int getHp();
     int getbaseAttack();
-    int getAttackRange() const;
-    int getDefense() const;
-    int attack() const;
+    int getAttackRange();
+    int getDefense();
+    int attack();
 
 
     private:

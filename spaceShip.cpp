@@ -48,25 +48,31 @@ void SpaceShip::setDefense(int d){
     defense = d;
 }
     
-    //getters
-    string SpaceShip::getName()
-    {
-        return name;
-    }
-    int SpaceShip::getFuel()
-    {
-        return fuel;
-    }
-    int SpaceShip::getGasMileage()
-    {
-        return gasMileage;
-    }
-    int SpaceShip::getAttack()
-    {
-        return attackPoints;
-    }
-    int SpaceShip::getDefense()
-    {
-        return defensePoints;
-    }
+//getters
+string SpaceShip::getName(){
+    return name;
+}
+int SpaceShip::getFuel(){
+    return fuel;
+}
+int SpaceShip::getGasMileage(){
+    return gasMileage;
+}
+int SpaceShip::getHp() const{
+return hp;
+}
+int SpaceShip::getbaseAttack() const{
+    return baseAttack;
+}
+int SpaceShip::getAttackRange() const{
+    return attackRange;
+}
+int SpaceShip::getDefense() const{
+    return defense;
+}
+int SpaceShip::attack() const{
+    int offset;
+    offset = rand() % (2*attackRange+1);
+    return (baseAttack-attackRange+offset);
+}
 

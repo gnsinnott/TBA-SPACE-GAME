@@ -97,20 +97,20 @@ int Player::getMoney()
 int Player::getIncome(){
     return income;
 }
-int Player::getHp() const
+int Player::getHp()
 {
     return hp;
 }
-int Player::getbaseAttack() const{
+int Player::getbaseAttack(){
     return baseAttack;
 }
-int Player::getAttackRange() const{
+int Player::getAttackRange(){
     return attackRange;
 }
-int Player::getDefense() const{
+int Player::getDefense(){
     return defense;
 }
-int Player::attack() const{
+int Player::attack(){
     int offset;
     offset = rand() % (2*attackRange+1);
     return (baseAttack-attackRange+offset);
