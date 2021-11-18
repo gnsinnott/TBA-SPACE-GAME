@@ -84,6 +84,12 @@ enemy1.setBaseAttack(4);
 enemy1.setDefense(1);
 enemy1.setAttackRange(2);
 
+SpaceShip spaceShip1; 
+spaceShip1.setBaseAttack(5);
+spaceShip1.setDefense(1);
+spaceShip1.setAttackRange(2);
+
+attackPlayer(player1,enemy1, spaceShip1);
 attackPlayer(player1, enemy1);
 
 

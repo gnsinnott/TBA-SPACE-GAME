@@ -166,7 +166,19 @@ void Map::generateMap(){
             display[y][x] = locations[i].getMapKey();
         }
     }
+    randomPlayerLoc();
 } 
+void randomPlayerLoc(Map map1){
+    srand(time(0));
+    bool flag = false;
+    do
+    {
+    int x = rand()% map1.getWidth();
+    int y = rand()% map1.getHeight();
+    flag = map1.setPlayerLoc(x, y);
+    } while (!flag);
+}
+    
 // Set player location on map
 bool Map::setPlayerLoc(int x, int y){
     if (display[y][x] == filler){ // Check if specified destination is empty space and not a marked location
