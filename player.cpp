@@ -125,5 +125,5 @@ int Player::attack(){
      cout << player.getName() << ":" << endl;
      cout << "Player Age: " << player.getAge() << endl;
      cout << "Player Money: $" << player.getMoney() << endl;
-     cout << "Player Base Attack; " << player.getbaseAttack() << endl;
+     cout << "Player Base Attack: " << player.getbaseAttack() << endl;
  }

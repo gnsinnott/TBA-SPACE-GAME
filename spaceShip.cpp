@@ -77,4 +77,9 @@ int SpaceShip::attack() const{
     offset = rand() % (2*attackRange+1);
     return (baseAttack-attackRange+offset);
 }
+void SpaceShip::displayStats(SpaceShip spaceShip){
+     cout << spaceShip.getName() << ":" << endl;
+     cout << "Ship Fuel (gallons): " << spaceShip.getFuel() << endl;
+     cout << "Ship Base Attack: " << spaceShip.getbaseAttack() << endl;
+ }
 
