@@ -20,7 +20,7 @@ void attackPlayer(Player player, Enemy enemy)
 while(player.getHp() > 0 && enemy.getHp() > 0)
 {
    enemy.setHp(enemy.getHp() - player.attack() + enemy.getDefense()); //Enemy HP = Enmey HP  + enemy defense - player attack 
-   if(enemy.getHp() < 0)
+   if(enemy.getHp() <= 0)
    {
     int playerBaseAttack = player.getbaseAttack();
     player.setBaseAttack(playerBaseAttack ++);
@@ -28,7 +28,7 @@ while(player.getHp() > 0 && enemy.getHp() > 0)
     return;
    } 
    player.setHp(player.getHp() - enemy.attack() + player.getDefense()); // Player HP = Player HP + player defense - enemy attack. 
-   if(player.getHp() < 0)
+   if(player.getHp() <= 0)
    {
     int playerAge = player.getAge();
     player.setAge(playerAge ++);
@@ -76,11 +76,13 @@ player1.setName("player1");
 player1.setHp(20);
 player1.setBaseAttack(5);
 player1.setDefense(0);
+player1.setAttackRange(2);
 
 Enemy enemy1;
 enemy1.setHp(18);
-enemy1.setBaseAttack(1);
+enemy1.setBaseAttack(4);
 enemy1.setDefense(1);
+enemy1.setAttackRange(2);
 
 attackPlayer(player1, enemy1);
 
