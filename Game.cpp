@@ -122,6 +122,7 @@ void Game::newGame(){
         ship.setGasMileage(3);
         ship.setHp(100);
     }
+    findLocation("CS Quadrant");
 }
 // Prints menu from array of strings
 int Game::printMenu(string title, string choices[], int size){
@@ -149,17 +150,42 @@ int Game::printMenu(string title, string choices[], int size){
     }
     while(true);
 }
+
+void Game::findLocation(string n){
+    for (int i = 0; i < locations.size(); i++){
+        if (locations[i].getName() == n){
+            for (int j = 0; j < maps.size(); j++){
+                if (maps[i].getName() == n){
+                    map = maps[i];
+                    youAreHere = locations[i];
+                }
+            }
+        }
+    }
+}
+
+SpaceShip Game::getShip(){
+    return ship;
+}
+Player Game::getPlayer(){
+    return player;
+}
+Location Game::getCurrentLocation(){
+    return youAreHere;
+}
+Map Game::getCurrentMap(){
+    return map;
+}
+
 // Sets new location, needs to be reworked
 void Game::newLocation(string l){ // Takes name of location
     string fileName = l + ".txt"; // add .txt to location to specify file name
     youAreHere.generateLocation(fileName); // Generate location
     map.setFile(youAreHere.getMapFile()); // Set map file name from location
     map.generateMap(); // Generate map from map file
-
 }
 // Starts play of game, needs to be reworked
 void Game::play(){
     map.setFile("cs.txt");
     map.generateMap();
-    
 }

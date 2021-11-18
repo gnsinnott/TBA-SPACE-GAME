@@ -81,7 +81,7 @@ void Map::setLocation(int i, Location location){
     locations[i] = location;
 }
 // Travel to destination on map, either Location key or coordinate
-int Map::travelTo(string destination){
+int Map::travelTo(string destination, int f){
     if (destination.size() == 1){ // If destination is location key
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
@@ -98,8 +98,16 @@ int Map::travelTo(string destination){
                 int tempRow = stoi(destination.substr(1)); // Set temp row to remainding chracters in destination string
                 // cout << "Column: " << tempColumn << endl << "Row: " << tempRow << endl;
                 if (tempColumn < width && tempRow < height){ // Verify coordinates are in range of map
-                    setPlayerLoc(tempColumn, tempRow); // Update player location
-                    return 1;
+                    int next[] = {tempColumn, tempRow};
+                    // int fuel = calcFuelCost(playerLoc, next);
+                    int fuel = 100;
+                    if (fuel <= f){
+                        setPlayerLoc(tempColumn, tempRow); // Update player location
+                        return 1;
+                    } else {
+                        cout << "Not enough fuel" << endl;
+                        return 0;
+                    }
                 }
                 else {
                     cout << "Entry out of bounds, try again." << endl;
@@ -244,6 +252,9 @@ int Map::getWidth() const{
 // Get map height as int
 int Map::getHeight() const{
     return height;
+}
+string Map::getName() const{
+    return name;
 }
 // "\033[1;31m\xF0\x9F\x9A\x80\033[0m"; Rocket
 // "\033[1;34m\xF0\x9F\x8C\x8F\033[0m" Planet

@@ -26,10 +26,10 @@ int main(){
         do {
             cout << "What map would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
             cin >> destination; // Get destination from user
-            if (1 == map.travelTo(destination)){ // Travel to map destination if travel to returns 1, (space on current map)
+            if (1 == map.travelTo(destination, 45)){ // Travel to map destination if travel to returns 1, (space on current map)
                 validLocation = true;
             }
-            if (int x = map.travelTo(destination) > 1){ // If travel to returns a new location
+            if (int x = map.travelTo(destination, 45) > 1){ // If travel to returns a new location
                 filename = map.getLocation(x-1).getMapFile(); // Set filename to filename of location in location array on map
                 map.setFile(filename);
                 map.generateMap();

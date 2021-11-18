@@ -25,6 +25,12 @@ class Game {
 
 
     // accessors/getters
+    SpaceShip getShip();
+    Player getPlayer();
+    Location getCurrentLocation();
+    Map getCurrentMap();
+    void findLocation(string n);
+    void loadLocation();
     void mainMenu();
     int printMenu(std::string t, std::string c[], int s);
     void newLocation(string l);

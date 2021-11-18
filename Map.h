@@ -27,7 +27,9 @@ class Map {
     bool setPlayerLoc(int x, int y);
     void setLocationCount(int c);
     void setLocation(int i, Location location);
-    int travelTo(std::string destination);
+    int travelTo(std::string destination, int f);
+    int calcFuelCost(int current[2], int next[2]);
+    void randomPlayerLoc();
 
 
     // accessors/getters

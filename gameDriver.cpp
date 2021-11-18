@@ -21,8 +21,12 @@ int main(){
         return 0;
     }
     game.newGame(); // Start new game, get's player and ship info
+    game.getCurrentMap().printMap();
+    
     // Need to implement gameplay loop here
     // Simple menu choice loop test
+    // string destination = "FA";
+    // game.getCurrentMap().travelTo(destination, game.getShip().getFuel());
     string title = "Final Frontier";
     string choices[] = {"Run", "Hide", "Explore"};
     choice = game.printMenu(title, choices, 3);
