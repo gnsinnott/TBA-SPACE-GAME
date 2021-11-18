@@ -168,14 +168,14 @@ void Map::generateMap(){
     }
     randomPlayerLoc();
 } 
-void randomPlayerLoc(Map map1){
+void Map::randomPlayerLoc(){
     srand(time(0));
     bool flag = false;
     do
     {
-    int x = rand()% map1.getWidth();
-    int y = rand()% map1.getHeight();
-    flag = map1.setPlayerLoc(x, y);
+    int x = rand()% width;
+    int y = rand()% height;
+    flag = setPlayerLoc(x, y);
     } while (!flag);
 }
     
