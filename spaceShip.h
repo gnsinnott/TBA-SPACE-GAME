@@ -33,7 +33,7 @@ class SpaceShip
     int getAttackRange() const;
     int getDefense() const;
     int attack() const;
-    void displayStats(SpaceShip spaceShip);
+    void displayStats();
 
     private:
     string name;
