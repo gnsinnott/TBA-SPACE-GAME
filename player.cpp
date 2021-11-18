@@ -120,3 +120,10 @@ int Player::attack(){
     offset = rand() % (2*attackRange+1);
     return (baseAttack-attackRange+offset);
 }
+ void Player::displayStats(Player player)
+ {
+     cout << player.getName() << ":" << endl;
+     cout << "Player Age: " << player.getAge() << endl;
+     cout << "Player Money: $" << player.getMoney() << endl;
+     cout << "Player Base Attack; " << player.getbaseAttack() << endl;
+ }

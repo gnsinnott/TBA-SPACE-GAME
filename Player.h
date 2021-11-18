@@ -40,6 +40,7 @@ class Player
     int getAttackRange();
     int getDefense();
     int attack();
+    void displayStats(Player player);
 
 
     private:
