@@ -43,6 +43,7 @@ class Map {
     int getLocationCount() const;
     void printLegend(bool p) const;
     Location getLocation(int i) const;
+    bool getPlayerMarked();
 
     private:
     std::string name;
@@ -52,6 +53,7 @@ class Map {
     int width;
     int height;
     bool random;
+    bool playerMarked;
     char filler;
     std::string display[20];
     int locationCount;

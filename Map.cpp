@@ -86,11 +86,11 @@ int Map::travelTo(string destination, int f){
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
                 //filename = getLocation(i).getMapFile(); // Send location to somewhere, not sure yet how to move between maps
-                return 1+i;
+                return i;
             }
         }
         cout << "Invalid destination" << endl;
-            return 0;
+            return -1;
     } else { // Get coordinates from destination 
         if (int(destination[0]) >= 65 && int(destination[0]) <= 90) { // Verify first character is a capital letter
             try { // Try and cast destination string to integers
@@ -100,27 +100,27 @@ int Map::travelTo(string destination, int f){
                 if (tempColumn < width && tempRow < height){ // Verify coordinates are in range of map
                     int next[] = {tempColumn, tempRow};
                     // int fuel = calcFuelCost(playerLoc, next);
-                    int fuel = 100;
+                    int fuel = 1;
                     if (fuel <= f){
                         setPlayerLoc(tempColumn, tempRow); // Update player location
-                        return 1;
+                        return 100;
                     } else {
                         cout << "Not enough fuel" << endl;
-                        return 0;
+                        return -1;
                     }
                 }
                 else {
                     cout << "Entry out of bounds, try again." << endl;
-                    return 0;
+                    return -1;
                 }
             }catch (const std::invalid_argument& e) { // Error if can't cast to integer
                 cout << "Invalid entry." << endl; 
-                return 0;
+                return -1;
             }
         }
         else {
             cout << "Invalid column or row." << endl;
-            return 0;
+            return -1;
         }
     }
 }
@@ -187,10 +187,15 @@ bool Map::setPlayerLoc(int x, int y){
         // Update new player location coordinates
         playerLoc[0]=x; 
         playerLoc[1]=y; 
+        playerMarked = true;
         return 1;
     } else{
         return 0;
     }
+}
+
+bool Map::getPlayerMarked(){
+    return playerMarked;
 }
 // Print map
 void Map::printMap() const{
