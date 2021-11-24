@@ -9,6 +9,11 @@
 
 using namespace std;
 
+void loadMap(Map map){
+    map.printMap();
+    map.printLegend(map.getPlayerMarked());
+}
+
 int main(){
     Game game; // create game variable
     int choice; 
@@ -21,15 +26,42 @@ int main(){
         return 0;
     }
     game.newGame(); // Start new game, get's player and ship info
-    game.getCurrentMap().printMap();
-    
-    // Need to implement gameplay loop here
-    // Simple menu choice loop test
-    // string destination = "FA";
-    // game.getCurrentMap().travelTo(destination, game.getShip().getFuel());
-    string title = "Final Frontier";
-    string choices[] = {"Run", "Hide", "Explore"};
-    choice = game.printMenu(title, choices, 3);
-    cout << "You chose to " << choices[choice] << " good luck!" << endl;
+    Map map = game.getCurrentMap();
+    loadMap(map);
+    do{
+        // Need to implement gameplay loop here
+        // Simple menu choice loop test
+        // string destination = "FA";
+        // game.getCurrentMap().travelTo(destination, game.getShip().getFuel());
+        string title = "Final Frontier";
+        string choices[] = {"Travel", "Check Stats"};
+        choice = game.printMenu(title, choices, 2);
+        cout << "You chose to " << choices[choice] << " good luck!" << endl;
+        if (choice == 0){
+            bool validLocation = false;
+            string destination;
+            loadMap(map);
+            do {
+                cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
+                getline(cin,destination);
+                int travelSuccess = map.travelTo(destination, 45);
+                if (travelSuccess == 100){ // Travel to map destination if travel to returns 0, (space on current map)
+                    validLocation = true;
+                    loadMap(map);
+                }
+                if (travelSuccess >= 0 && travelSuccess != 100){
+                    game.findLocation(map.getLocation(travelSuccess).getName());
+                    map = game.getCurrentMap();
+                    validLocation = true;
+                    loadMap(map);
+                }   
+            }
+            while(!validLocation);
+        }
+    else if(choice == 1){
+        game.getPlayer().displayStats();
+        game.getShip().displayStats();
+    }
+    } while(true);
     return 0;
 }
