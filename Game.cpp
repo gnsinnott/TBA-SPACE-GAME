@@ -154,9 +154,11 @@ int Game::printMenu(string title, string choices[], int size){
 void Game::findLocation(string n){
     for (int i = 0; i < locations.size(); i++){
         if (locations[i].getName() == n){
+            cout << "Location found" << endl;
             for (int j = 0; j < maps.size(); j++){
-                if (maps[i].getName() == n){
-                    map = maps[i];
+                if (maps[j].getName() == n){
+                    map = maps[j];
+                    cout << "Find location Map: " << map.getName() << endl;
                     youAreHere = locations[i];
                 }
             }
@@ -174,9 +176,9 @@ Location Game::getCurrentLocation(){
     return youAreHere;
 }
 Map Game::getCurrentMap(){
+    cout << "Map: " << map.getName() << endl; 
     return map;
 }
-
 // Sets new location, needs to be reworked
 void Game::newLocation(string l){ // Takes name of location
     string fileName = l + ".txt"; // add .txt to location to specify file name

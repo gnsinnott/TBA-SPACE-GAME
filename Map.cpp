@@ -210,13 +210,13 @@ bool Map::getPlayerMarked(){
 void Map::printMap() const{
     // Print name of map
     cout << name << endl;
-    cout << "   ";
+    cout << "    ";
     // Print column headers
     for(int j = 0; j < width; j++){
         cout << char(65+j) << " ";
     }
     cout << endl;
-    cout << "  ";
+    cout << "   ";
     // Print top border
     for(int j = 0; j < width*2+1; j++){
         cout << "-";
@@ -224,7 +224,11 @@ void Map::printMap() const{
     cout << endl;
     // Print row header, left border, coordinates value, right border, row header
     for (int i = 0; i < height; i++){
-        cout << i << "| ";
+        if (i < 10 ){
+            cout << "0" << i << "| ";
+        } else {
+            cout << i << "| "; 
+        }
         for(int j = 0; j < width; j++){
             if (display[i][j] == '$'){ // At player location print rocket ship
                 cout << "\033[1;31m\xF0\x9F\x9A\x80\033[0m";
@@ -232,15 +236,19 @@ void Map::printMap() const{
                 cout << display[i][j] << " ";
             }
         }
-        cout << "|" << i << endl;  
+        if (i < 10){
+            cout << "|" << "0" << i << endl;
+        } else {
+            cout << "|" << i << endl;
+        }
     }
-    cout << "  ";
+    cout << "   ";
     // Print bottom border
     for(int j = 0; j < width*2+1; j++){
         cout << "-";
     }
     cout << endl;
-    cout << "   ";
+    cout << "    ";
     // Print column headers
     for(int j = 0; j < width; j++){
         cout << char(65+j) << " ";

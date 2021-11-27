@@ -58,6 +58,7 @@ int main(){
                     game.findLocation(map.getLocation(travelSuccess).getName());
                     map = game.getCurrentMap();
                     validLocation = true;
+                    cout << map.getName() << endl;
                     loadMap(map);
                 }   
             }

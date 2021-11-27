@@ -2,7 +2,8 @@ Java
 The sun is setting, it should cool down enough for your team to leave the safety of the ship and explore the desert planet. Ship readings show a location to the north that could be populated.
 15
 10
-4
+3
 +
 C++.txt
 Rust.txt
+CS.txt

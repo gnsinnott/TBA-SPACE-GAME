@@ -38,14 +38,15 @@ class Game {
     void play();
     SpaceShip ship;
     Player player;
+    // Map map;
 
     private:
     const int size = 20;
     vector <Location> locations;
     vector <Map> maps;
     Location youAreHere;
-    Player player;
-    SpaceShip ship;
+    // Player player;
+    // SpaceShip ship;
     Map map;
 };
 #endif
