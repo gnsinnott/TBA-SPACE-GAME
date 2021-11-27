@@ -44,12 +44,17 @@ int main(){
             do {
                 cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
                 getline(cin,destination);
-                int travelSuccess = map.travelTo(destination, 45);
+                int fuel[] = {game.getShip().getFuel()};
+                int travelSuccess = map.travelTo(destination, fuel);
                 if (travelSuccess == 100){ // Travel to map destination if travel to returns 0, (space on current map)
+                    cout << fuel[0] << endl;
+                    game.ship.setFuel(fuel[0]);
+                    cout << game.getShip().getFuel() << endl;
                     validLocation = true;
                     loadMap(map);
                 }
                 if (travelSuccess >= 0 && travelSuccess != 100){
+                    game.ship.setFuel(fuel[0]);
                     game.findLocation(map.getLocation(travelSuccess).getName());
                     map = game.getCurrentMap();
                     validLocation = true;

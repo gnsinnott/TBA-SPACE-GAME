@@ -5,6 +5,7 @@
 #include"Map.h"
 #include<iostream>
 #include<fstream>
+#include<cmath>
 using namespace std;
 
 // Function to split character seperated values and return array of strings
@@ -81,7 +82,7 @@ void Map::setLocation(int i, Location location){
     locations[i] = location;
 }
 // Travel to destination on map, either Location key or coordinate
-int Map::travelTo(string destination, int f){
+int Map::travelTo(string destination, int fuel[]){
     if (destination.size() == 1){ // If destination is location key
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
@@ -99,9 +100,9 @@ int Map::travelTo(string destination, int f){
                 // cout << "Column: " << tempColumn << endl << "Row: " << tempRow << endl;
                 if (tempColumn < width && tempRow < height){ // Verify coordinates are in range of map
                     int next[] = {tempColumn, tempRow};
-                    // int fuel = calcFuelCost(playerLoc, next);
-                    int fuel = 1;
-                    if (fuel <= f){
+                    int fuelCost = calcFuelCost(playerLoc, next);
+                    if (fuelCost <= fuel[0]){
+                        fuel[0] = fuel[0] - fuelCost;
                         setPlayerLoc(tempColumn, tempRow); // Update player location
                         return 100;
                     } else {
@@ -124,6 +125,14 @@ int Map::travelTo(string destination, int f){
         }
     }
 }
+
+int Map::calcFuelCost(int curr[2], int dest[2]){
+    int x = abs(curr[0] - dest[0]);
+    int y = abs(curr[1] - dest[1]);
+    int distance = sqrt(pow(x,2) + pow(y,2));
+    return distance;   
+}
+
 // Generate map from file
 void Map::generateMap(){
     ifstream mapFile; // Create filestream

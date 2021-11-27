@@ -22,6 +22,7 @@ class Game {
     void setLocation(Location l);
     int generateLocations();
     int generateMaps();
+    void setShipFuel(int f);
 
 
     // accessors/getters
@@ -35,6 +36,8 @@ class Game {
     int printMenu(std::string t, std::string c[], int s);
     void newLocation(string l);
     void play();
+    SpaceShip ship;
+    Player player;
 
     private:
     const int size = 20;
