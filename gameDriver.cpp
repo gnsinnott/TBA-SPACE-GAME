@@ -54,7 +54,7 @@ int main(){
                     loadMap(map);
                 }
                 if (travelSuccess >= 0 && travelSuccess != 100){
-                    game.ship.setFuel(fuel[0]);
+                    game.ship.setFuel(fuel[0]-10);
                     game.findLocation(map.getLocation(travelSuccess).getName());
                     map = game.getCurrentMap();
                     validLocation = true;

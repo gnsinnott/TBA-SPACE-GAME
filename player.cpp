@@ -80,7 +80,7 @@ bool Player::buy(string item, int price)
     }
 }
 void Player::setNumPlanets(int np){
-    numPlanets = numPlanets;
+    numPlanets = np;
 }
 
 //getters

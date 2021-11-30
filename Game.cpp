@@ -258,58 +258,57 @@ return size;
 /*  This fuction records player scores to highScores.txt and prints out the scores and player names to terminal in descending order. 
 */
 void Game::endGame(){
-ofstream fout;
-fout.open("highScores.txt", ios::app);
-string line;
-    if(!fout.is_open())
-    {
-        cout << "Could not open high scores file" << endl;
-    }
-    fout << player.getName() << ", " << player.getNumPlanets() << endl; 
-ifstream fin;
-vector<string> playerNames;
-vector<int> numPlanets;
-fin.open("highScores.txt");
-    if(fin.fail())
-    {
-      cout << "Could not open high scores file" << endl;  
-    } 
-string line;
-const int SIZE = 2;
-string array[SIZE];
-char delimiter = ',';
-while(getline(fin,line))//As long as there is data to read from file loop will execute
-    {
-        if(!isspace(line[0]) && line.length() > 1)
+    ofstream fout;
+    fout.open("highScores.txt", ios::app);
+    string line;
+        if(!fout.is_open())
         {
-            split(line, delimiter, array, SIZE);
-            playerNames.push_back(array[0]);
-            numPlanets.push_back(stoi(array[1]));
+            cout << "Could not open high scores file" << endl;
+        }
+        fout << player.getName() << ", " << player.getNumPlanets() << endl; 
+    ifstream fin;
+    vector<string> playerNames;
+    vector<int> numPlanets;
+    fin.open("highScores.txt");
+        if(fin.fail())
+        {
+        cout << "Could not open high scores file" << endl;  
         } 
-    }
-fin.close(); //close file
-int tempInt = 0;
-string tempString; 
-bool flag = true;
-    while (flag == true) //sorts integer array smallest to leargest 
-    {
-        flag = false;
-        for (int i = 0; i < size-1; i++)
+    const int SIZE = 2;
+    string array[SIZE];
+    char delimiter = ',';
+    while(getline(fin,line))//As long as there is data to read from file loop will execute
         {
-            if (numPlanets[i] < numPlanets[i+1])
+            if(!isspace(line[0]) && line.length() > 1)
             {
-                tempInt = numPlanets[i];
-                tempString = playerNames[i];
-                numPlanets[i] = numPlanets[i+1];
-                playerNames[i] = playerNames[i+1];
-                numPlanets[i+1] = tempInt;
-                playerNames[i+1] = tempString;
-                flag = true;
+                split(line, delimiter, array, SIZE);
+                playerNames.push_back(array[0]);
+                numPlanets.push_back(stoi(array[1]));
+            } 
+        }
+    fin.close(); //close file
+    int tempInt = 0;
+    string tempString; 
+    bool flag = true;
+        while (flag == true) //sorts integer array smallest to leargest 
+        {
+            flag = false;
+            for (int i = 0; i < size-1; i++)
+            {
+                if (numPlanets[i] < numPlanets[i+1])
+                {
+                    tempInt = numPlanets[i];
+                    tempString = playerNames[i];
+                    numPlanets[i] = numPlanets[i+1];
+                    playerNames[i] = playerNames[i+1];
+                    numPlanets[i+1] = tempInt;
+                    playerNames[i+1] = tempString;
+                    flag = true;
+                }
             }
         }
+    for(int i = 0; i < playerNames.size(); i++)
+    {
+        cout << playerNames[i] << ", " << numPlanets[i] << endl;
     }
-for(int i = 0; i < playerNames.size(); i++)
-{
-    cout << playerNames[i] << ", " << numPlanets[i] << endl;
-}
 }
