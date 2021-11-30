@@ -19,7 +19,7 @@ void attackPlayer(Player player)
 {
 while(player.getHp() > 0 && enemy.getHp() > 0)
 {
-   enemy.setHp(enemy.getHp() - player.attack() + enemy.getDefense()); //Enemy HP = Enmey HP  + enemy defense - player attack 
+   enemy.setHp(enemy.getHp() - player.attack() + enemy.getDefense()); //Enemy HP = Enemy HP  + enemy defense - player attack 
    if(enemy.getHp() <= 0)
    {
     int playerBaseAttack = player.getbaseAttack();
@@ -39,7 +39,7 @@ while(player.getHp() > 0 && enemy.getHp() > 0)
 player.setHp(20); //Player HP returns to preset value
 
 }
-/* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enmey object battle. The enemy attacks first. This the enemy
+/* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enemy object battle. The enemy attacks first. This the enemy
 attack reduces the spaceship Hp (Health Points) below zero, the enemys wins and the player loses money (between ($0-$50)). Next The SpaceShip attacks, if the spaceship attack reduces the enemy health points 
 below zero the player wins resulting in a gain of a random amount of money between ($1-$100). 
 inputs- player object, enemy object
@@ -54,7 +54,7 @@ while(ship.getHp() > 0 && enemy.getHp() > 0)
    enemy.setHp(enemy.getHp() - ship.attack() + enemy.getDefense());
    if(enemy.getHp() < 0)
    {
-    cout << "You have won this battle and scavanged $"<< money <<" from the enemies ship." << endl;
+    cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
     player.setMoney(player.getMoney() + money);
     return;
    } 

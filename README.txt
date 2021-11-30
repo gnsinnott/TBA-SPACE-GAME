@@ -28,5 +28,5 @@ November 24th 2021
 ------------------------
 ABOUT THIS PROJECT
 ------------------------
-This project implements a game that allows a player to travel through spcae on a spaceship of there choosing 
+This project implements a game that allows a player to travel through space on a spaceship of there choosing 
 and discover new planets.

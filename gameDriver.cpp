@@ -33,41 +33,78 @@ int main(){
         // Simple menu choice loop test
         // string destination = "FA";
         // game.getCurrentMap().travelTo(destination, game.getShip().getFuel());
-        string title = "Final Frontier";
-        string choices[] = {"Travel", "Check Stats"};
-        choice = game.printMenu(title, choices, 2);
-        cout << "You chose to " << choices[choice] << " good luck!" << endl;
-        if (choice == 0){
-            bool validLocation = false;
-            string destination;
-            loadMap(map);
-            do {
-                cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
-                getline(cin,destination);
-                int fuel[] = {game.getShip().getFuel()};
-                int travelSuccess = map.travelTo(destination, fuel);
-                if (travelSuccess == 100){ // Travel to map destination if travel to returns 0, (space on current map)
-                    cout << fuel[0] << endl;
-                    game.ship.setFuel(fuel[0]);
-                    cout << game.getShip().getFuel() << endl;
-                    validLocation = true;
-                    loadMap(map);
-                }
-                if (travelSuccess >= 0 && travelSuccess != 100){
-                    game.ship.setFuel(fuel[0]-10);
-                    game.findLocation(map.getLocation(travelSuccess).getName());
-                    map = game.getCurrentMap();
-                    validLocation = true;
-                    cout << map.getName() << endl;
-                    loadMap(map);
-                }   
+        if (game.getCurrentLocation().getMapFile() == "Planet"){ // When on a planet
+            string planetChoices[] = {"Explore", "Shop", "Work", "Check Stats", "Return to Space", "Help"};
+            choice = game.printMenu("Planet Options", planetChoices, 7);
+            switch (choice)
+            {
+            case 6:
+                cout << "Here is an explanation of what you can do on a planet" << endl;
+                cout << "Explore: You explore the current planet and you may get the opportunity to gather information such as new planet locations." << endl;
+                cout << "Shop: Go to a local shop and spend your money to purchase upgrades to your ship." << endl;
+                cout << "Work: Exchange years of your life in exchange for money." << endl;
+                cout << "Check Stats: View you and your ships current statistics" << endl;
+                cout << "Return to Space: Self explanatory, return to your ship and go back into space." << endl;
+                cout << "Help: Um... I'm sure you can figure out what this does." << endl;
+                break;
+            
+            default:
+                break;
             }
-            while(!validLocation);
         }
-    else if(choice == 1){
-        game.getPlayer().displayStats();
-        game.getShip().displayStats();
+        else {
+            string spaceChoices[] = {"Travel", "Check Stats", "Option 3", "Option 4", "option 5",  "Quit"};
+            choice = game.printMenu("Space Options", spaceChoices, 6);
+            cout << "You chose to " << spaceChoices[choice] << " good luck!" << endl;
+            switch (choice)
+            {
+            case 0: { // Player wants to travel on map
+                bool validLocation = false;
+                string destination;
+                loadMap(map); // Prints current map and legend
+                do {
+                    cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
+                    getline(cin,destination); // Get desired travel destination
+                    int fuel[] = {game.getShip().getFuel()}; // Assign current fuel to array variable
+                    int travelSuccess = map.travelTo(destination, fuel); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
+                    if (travelSuccess == 100){ // Travel to map destination if travel to returns 100, (space on current map)
+                        game.ship.setFuel(fuel[0]); // Update ship fuel
+                        validLocation = true; // Set valid location to true to exit loop
+                        loadMap(map); // Print map and legend
+                    }
+                    if (travelSuccess >= 0 && travelSuccess != 100){ // If travel to returns an integer not 0 or 100 this means they are going to a known destination
+                        game.ship.setFuel(fuel[0]-10); // Reduce fuel by 10
+                        game.findLocation(map.getLocation(travelSuccess).getName()); // Get new location name
+                        map = game.getCurrentMap(); // Assign new map
+                        validLocation = true; // Set valid location to true to exit loop
+                        cout << map.getName() << endl; // Print new map name
+                        loadMap(map); // Print map and legend
+                    }   
+                }
+                while(!validLocation); // Loop until new valid location is set
+                break;
+            }
+            case 1: { // Show player stats
+                game.getPlayer().displayStats(); // Print player stats
+                game.getShip().displayStats(); // Print ship stats
+            }
+            case 2: { // Option 3
+
+            }
+            case 3: { // Option 4
+
+            }
+            case 4: { // Option 5
+
+            }
+            case 5: { // Quit game
+                // Record player score
+            }
+            default:
+                break;
+            }
+        }
     }
-    } while(true);
+    while(true);
     return 0;
 }

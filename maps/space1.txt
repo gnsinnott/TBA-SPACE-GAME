@@ -1,9 +1,0 @@
-Space
-You are now amongst the starts, the blackness around you is broken up by pinpricks of light showing starts light years away. In the local system there are 2 habitable planets you can land on, Java, and Ruby. 
-10
-15
-3
--
-C++.txt
-Rust.txt
-Java.txt

@@ -7,7 +7,7 @@
 
 using namespace std;
 /* This function takes a player object a item name and a price. If the player has enough money to buy the item the players money is reduced by
-the price of the item and the functions returns true. If the player Does not have enough money to buy the onject the function returns false and the 
+the price of the item and the functions returns true. If the player Does not have enough money to buy the item the function returns false and the 
 players money is unchanged. 
 */ 
 bool buy(string item, int price, Player player)

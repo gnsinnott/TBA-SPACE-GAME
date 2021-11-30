@@ -127,7 +127,7 @@ void Game::newGame(){
     }
     findLocation("C++ System");
 }
-// Prints menu from array of strings
+// Prints menu from array of strings, takes title, array of choices and array size
 int Game::printMenu(string title, string choices[], int size){
     string input;
     int choice = 0;
@@ -196,7 +196,7 @@ void Game::play(){
 }
 /*  This fuction numDelimiters takes a string with delimitersand counts the number of  delimiters, 
 -input string input, char delimiter
--output number of Deliminators.  
+-output number of Deliminator.  
 */
 int numDelimiters(string input, char delimiter) // Finds the number of delimiters in a string, returns number of delimiters
 {
