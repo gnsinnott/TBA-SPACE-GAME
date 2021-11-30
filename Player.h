@@ -26,7 +26,7 @@ class Player
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
     void setDefense(int defense);
-    bool buy(string item, int price, Player player);
+    bool buy(string item, int price);
     
     
     //getters

@@ -63,20 +63,19 @@ void Player::setAge(int a)
 {
     age = a;
 }
-bool buy(string item, int price, Player player)
+bool Player::buy(string item, int price)
 {
-    int playerMoney = player.getMoney();
-    if(price > playerMoney)
+    if(price > money)
     { 
-       cout << "You have $ " << player.getMoney() << "." << endl;
+       cout << "You have $ " << money << "." << endl;
        cout << "You do not have enough money to buy " << item << " \xF0\x9F\x98\x96." << endl;
        return false;
     }
     else
     {
         cout << "You bought " << item << "." << endl;
-        player.setMoney(playerMoney - price);
-        cout << "You have $ " << player.getMoney() << "." << endl;
+        money = (money - price);
+        cout << "You have $ " << money << "." << endl;
         return true;  
     }
 }

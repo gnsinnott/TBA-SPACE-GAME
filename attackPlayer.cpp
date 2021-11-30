@@ -15,7 +15,7 @@ below zero the player loses resulting in a loss of 1 year on their lifespan.
 inputs- player object, enemy object
 return void
 */ 
-void attackPlayer(Player player, Enemy enemy)
+void attackPlayer(Player player)
 {
 while(player.getHp() > 0 && enemy.getHp() > 0)
 {

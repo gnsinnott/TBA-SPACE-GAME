@@ -36,6 +36,7 @@ class Game {
     int printMenu(std::string t, std::string c[], int s);
     void newLocation(string l);
     void play();
+    void endGame();
     SpaceShip ship;
     Player player;
     // Map map;

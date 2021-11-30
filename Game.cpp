@@ -191,3 +191,19 @@ void Game::play(){
     map.setFile("cs.txt");
     map.generateMap();
 }
+void Game::endGame(){
+ofstream fout1;
+fout1.open("highScores.txt", ios::app);
+string line;
+    if(!fout1.is_open())
+    {
+        cout << "Could not open high scores file" << endl;
+    }
+    fout << player.name << " " << player.age << " " << player.money endl; 
+
+
+    
+    fout1.close();
+    
+    
+}
