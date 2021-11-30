@@ -79,6 +79,9 @@ bool Player::buy(string item, int price)
         return true;  
     }
 }
+void Player::setNumPlanets(int np){
+    numPlanets = numPlanets;
+}
 
 //getters
 string Player::getName()
@@ -125,4 +128,7 @@ int Player::attack(){
      cout << "Player Age: " << age << endl;
      cout << "Player Money: $" << money << endl;
      cout << "Player Base Attack: " << baseAttack << endl;
+ }
+ int Player::getNumPlanets(){
+ return numPlanets;
  }

@@ -191,19 +191,125 @@ void Game::play(){
     map.setFile("cs.txt");
     map.generateMap();
 }
+/*  This fuction numDelimiters takes a string with delimitersand counts the number of  delimiters, 
+-input string input, char delimiter
+-output number of Deliminators.  
+*/
+int numDelimiters(string input, char delimiter) // Finds the number of delimiters in a string, returns number of delimiters
+{
+ int length = input.length();
+ int count = 0;
+ for(int i = 0; i < length; i++)
+    {
+       if(input[i]== delimiter)
+       {
+           count ++;
+       } 
+    }
+return count;
+}
+/*  This fuction (split()) takes a string with delimiters, and breaks the string pieces based on the delimiters, 
+placing each piece sequentially in an array. 
+-input string input, char delimiter, string array, integer array size
+-output size of the array 
+*/
+int split(string input, char delimiter, string array[], int size) // splits string into string array at delimiter character  
+{
+    int num_delimiter = numDelimiters(input, delimiter);
+    int input_length = input.length();
+    
+    if(input != "") //If input string is not empty
+    {
+        int array_enteries = num_delimiter +1;
+            int i = 0;
+            for(int j = 0; j < array_enteries; j++)
+            {
+                string str1 = "";
+                while(input[i] != delimiter && i < input_length)
+                {
+                    char char1 = input[i];
+                    str1 = str1 + char1; //str1 = all values up to delimiter
+                    array[j] = str1; //array j = str1 
+                    i ++; 
+                }   
+            //cout << array[j] << endl;
+            i ++; //moves i past delimiter 
+            }
+        if(size > num_delimiter && num_delimiter != 0) 
+        {
+           size =  num_delimiter+1;     
+        }
+        else if(num_delimiter == 0) // if no delimiters size = 1
+        {
+            size = 1;
+        }  
+        else // if number of delimiters is greater than or equal to array indices size = -1
+        {
+            size = -1;
+        }
+    }
+    else //if empty size equals zero
+    {
+        size = 0; 
+    }
+    
+return size;
+}
+/*  This fuction records player scores to highScores.txt and prints out the scores and player names to terminal in descending order. 
+*/
 void Game::endGame(){
-ofstream fout1;
-fout1.open("highScores.txt", ios::app);
+ofstream fout;
+fout.open("highScores.txt", ios::app);
 string line;
-    if(!fout1.is_open())
+    if(!fout.is_open())
     {
         cout << "Could not open high scores file" << endl;
     }
-    fout << player.name << " " << player.age << " " << player.money endl; 
-
-
-    
-    fout1.close();
-    
-    
+    fout << player.getName() << ", " << player.getNumPlanets() << endl; 
+ifstream fin;
+vector<string> playerNames;
+vector<int> numPlanets;
+fin.open("highScores.txt");
+    if(fin.fail())
+    {
+      cout << "Could not open high scores file" << endl;  
+    } 
+string line;
+const int SIZE = 2;
+string array[SIZE];
+char delimiter = ',';
+while(getline(fin,line))//As long as there is data to read from file loop will execute
+    {
+        if(!isspace(line[0]) && line.length() > 1)
+        {
+            split(line, delimiter, array, SIZE);
+            playerNames.push_back(array[0]);
+            numPlanets.push_back(stoi(array[1]));
+        } 
+    }
+fin.close(); //close file
+int tempInt = 0;
+string tempString; 
+bool flag = true;
+    while (flag == true) //sorts integer array smallest to leargest 
+    {
+        flag = false;
+        for (int i = 0; i < size-1; i++)
+        {
+            if (numPlanets[i] < numPlanets[i+1])
+            {
+                tempInt = numPlanets[i];
+                tempString = playerNames[i];
+                numPlanets[i] = numPlanets[i+1];
+                playerNames[i] = playerNames[i+1];
+                numPlanets[i+1] = tempInt;
+                playerNames[i+1] = tempString;
+                flag = true;
+            }
+        }
+    }
+for(int i = 0; i < playerNames.size(); i++)
+{
+    cout << playerNames[i] << ", " << numPlanets[i] << endl;
+}
 }
