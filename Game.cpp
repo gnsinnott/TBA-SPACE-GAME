@@ -41,9 +41,12 @@ int Game::generateLocations(){
 int Game::generateMaps(){
     for (int i = 0; i < locations.size(); i++){ // Iterate over locations vector
         Map temp;
-        temp.setFile(locations[i].getMapFile()); // Set map file from location
-        temp.generateMap(); // Generate the map
-        maps.push_back(temp); // Add map to vector of maps in game
+        string file = locations[i].getMapFile(); // Get file name of map
+        if (file != "Planet") { // Verify location is not a planet
+            temp.setFile(file);
+            temp.generateMap(); // Generate the map
+            maps.push_back(temp); // Add map to vector of maps in game
+        }
     }
     if (maps.size() == 0){ // If no maps added return -1
         return -1; 
@@ -122,7 +125,7 @@ void Game::newGame(){
         ship.setGasMileage(3);
         ship.setHp(100);
     }
-    findLocation("CS Quadrant");
+    findLocation("C++ System");
 }
 // Prints menu from array of strings
 int Game::printMenu(string title, string choices[], int size){

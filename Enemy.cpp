@@ -66,6 +66,7 @@ bool Enemy::attackPlayer(Player player){
         }  
     }
     player.setHp(20); //Player HP returns to preset value
+    return false;
 }
 /* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enemy object battle. The enemy attacks first. This the enemy
 attack reduces the spaceship Hp (Health Points) below zero, the enemys wins and the player loses money (between ($0-$50)). Next The SpaceShip attacks, if the spaceship attack reduces the enemy health points 
@@ -85,17 +86,18 @@ bool Enemy::attackPlayerShip(Player player, SpaceShip ship){
     {
         cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
         player.setMoney(player.getMoney() + money);
-        return;
+        return true;
     } 
     ship.setHp(ship.getHp() - attack() + ship.getDefense());
     if(ship.getHp() < 0)
     {
         cout << "You have lost this battle and $" << money/2 << " was stolen from your ship" <<  endl;
         player.setMoney(player.getMoney() - money/2);
-        return;
+        return false;
     }  
     }
-ship.setHp(20);
+    ship.setHp(20);
+    return false;
 }
 
 //getter

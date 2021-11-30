@@ -1,0 +1,7 @@
+Object
+Object Planet
+Planet
+true
+4
+6
+O

@@ -1,0 +1,7 @@
+Main
+Main Planet
+Planet
+true
+7
+4
+M

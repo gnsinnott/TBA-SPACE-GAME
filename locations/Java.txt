@@ -2,6 +2,6 @@ Java
 Java is the third planet of the Code system.
 Java.txt
 true
-5
-8
+3
+9
 J

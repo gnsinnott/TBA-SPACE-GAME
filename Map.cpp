@@ -8,27 +8,27 @@
 #include<cmath>
 using namespace std;
 
-// Function to split character seperated values and return array of strings
-int split(string text, char delim, string splitArray[], int size) {
-    int start = 0; //Start of first item to split
-    int delimCount = 0; // How many delimeters where found
-    int length = text.length(); // Total length of text
-    if (length == 0) { // If string of length 0 return 0
-        return 0;
-    }
-    for (int i = 0; i < length; i++){ // Iterate over text
-        if (text[i] == delim) { // Check if char is delimiter
-            splitArray[delimCount] = text.substr(start, i-start); // Set string in array split at location of delimeter count equal to substring from start to length of char location - start location
-            start = i+1; // New start location is the char after the delimeter
-            delimCount++; // Increase running count of delimiters
-        }
-    }
-    if (delimCount > size-1){ // Delim count is equal to number of split strings -1, if greater than size-1 return -1
-        return -1;
-    }
-    splitArray[delimCount] =  text.substr(start, length - start); // Add string found after last delimeter to the array at final delimCount location
-    return delimCount+1; // Returns number of split strings which is 1 more than number of delimiters
-}
+// // Function to split character seperated values and return array of strings
+// int split(string text, char delim, string splitArray[], int size) {
+//     int start = 0; //Start of first item to split
+//     int delimCount = 0; // How many delimeters where found
+//     int length = text.length(); // Total length of text
+//     if (length == 0) { // If string of length 0 return 0
+//         return 0;
+//     }
+//     for (int i = 0; i < length; i++){ // Iterate over text
+//         if (text[i] == delim) { // Check if char is delimiter
+//             splitArray[delimCount] = text.substr(start, i-start); // Set string in array split at location of delimeter count equal to substring from start to length of char location - start location
+//             start = i+1; // New start location is the char after the delimeter
+//             delimCount++; // Increase running count of delimiters
+//         }
+//     }
+//     if (delimCount > size-1){ // Delim count is equal to number of split strings -1, if greater than size-1 return -1
+//         return -1;
+//     }
+//     splitArray[delimCount] =  text.substr(start, length - start); // Add string found after last delimeter to the array at final delimCount location
+//     return delimCount+1; // Returns number of split strings which is 1 more than number of delimiters
+// }
 
 // constructors
 Map::Map(){

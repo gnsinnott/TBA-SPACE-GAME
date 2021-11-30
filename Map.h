@@ -57,7 +57,7 @@ class Map {
     char filler;
     std::string display[20];
     int locationCount;
-    Location locations[5];
+    Location locations[20];
     int playerLoc[2] = {0,0}; // x y location of player
 };
 

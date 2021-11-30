@@ -1,0 +1,7 @@
+Std
+Std Planet
+Planet
+true
+6
+9
+S

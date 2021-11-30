@@ -1,0 +1,15 @@
+C++ System
+You are finally in space, it's time to explore!
+10
+10
+9
+*
+Array.txt
+Std.txt
+Cout.txt
+Include.txt
+Main.txt
+Object.txt
+Bjarne.txt
+Java.txt
+Python.txt
