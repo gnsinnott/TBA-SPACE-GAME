@@ -86,6 +86,10 @@ void Game::newGame(){
         {
             cout << "Invalid input." << endl;
         }
+        catch(const std::out_of_range& e) // Catch error if number is too large
+        {
+            cout << "Invalid input." << endl;
+        }
     }
     while(!validAge); // Loops until age is set to appropriate value
     cout << "Name: " << player.getName() << endl;
@@ -141,6 +145,11 @@ int Game::printMenu(string title, string choices[], int size){
         }
         catch(const std::invalid_argument& e) // Catch error if string cannot become an integer
         {
+            cout << "Invalid input." << endl;
+        }
+        catch(const std::out_of_range& e) // Catch error if number is too large
+        {
+            cout << "Invalid input." << endl;
         }
         if(choice != 0 && choice <= size){
             return choice-1; // Return choice indexed back to 0
@@ -364,24 +373,49 @@ void Game::endGame(){
         cout << playerNames[i] << ", " << numPlanets[i] << endl;
     }
 }
-SpaceShip Game::buy(Player player, SpaceShip ship) // needs work, can't pass back a ship and player
+// Function that allows player to buy things when on planets
+void Game::buy()
 {
-    string choices[] ={"gas...$10 per gallon", "dynamite...$1000", "beer...$10"};
-    int option = printMenu("What would you like to buy?", choices, 3);
+    string choices[] ={"gas...$100 per gallon", "dynamite...$1000", "beer...$10"}; // Items to buy
+    int option = printMenu("What would you like to buy?", choices, 3); // Generate menu to get player choice
     int money = player.getMoney();
-    if(option = 0)
-    { 
-       int numGallons = 0;
-       cout << "How many Gallons would you like to buy?" << endl;
-       cin >> numGallons;
-       if(money <= 10 * numGallons){
-       cout << "You have $ " << money << "." << "You do not have enough money to buy gas" << " \xF0\x9F\x98\x96." << endl;   
-       }
-       else{
-        cout << "You have bought " << numGallons << " of gas, enjoy your journey!" << endl;
-        ship.setFuel(ship.getFuel() + numGallons);
-       }
-       
+    string input;
+    bool validChoice = false;
+    if(option == 0){
+        do { 
+            int numGallons = 0;
+            cout << "How many Gallons would you like to buy?" << endl;
+            getline(cin, input);
+            try // Try to convert string to integer
+                {
+                    numGallons = stoi(input);
+                    if (numGallons < 0){
+                        cout << "You can't buy negative fuel." << endl;
+                    }
+                    else if(money <= 100 * numGallons){ // Check if player does not have enough money
+                        cout << "You have $ " << money << "." << "You do not have enough credits to buy this much gas" << " \xF0\x9F\x98\x96." << endl;  
+                    }
+                    else {
+                        cout << "You have bought " << numGallons << " of gas, enjoy your journey!" << endl;
+                        ship.setFuel(ship.getFuel() + numGallons); // Update fuel
+                        player.setMoney(money - 100 * numGallons); // Update player credits
+                        validChoice = true; // Confirm valid choice
+                    }
+                }
+                catch(const std::invalid_argument& e) // Catch error if string cannot become an integer
+                {
+                    cout << "Invalid input." << endl;
+                    validChoice = false;
+                }
+                catch(const std::out_of_range& e) // Catch error if number is too large
+                {
+                    cout << "Invalid input." << endl;
+                    validChoice = false;
+                }
+        } while(!validChoice); // Loops until valid purchase amount is entered
+    } else if(option == 1){
+
+    } else if(option == 2){
+
     }
-    
 }

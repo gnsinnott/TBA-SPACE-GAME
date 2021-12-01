@@ -48,6 +48,7 @@ int main(){
                     break;
                 }
                 case 1:{ // Shop
+                    game.buy();
                     break;
                 }
                 case 2:{ // Work

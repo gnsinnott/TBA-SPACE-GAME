@@ -24,6 +24,7 @@ class Game {
     int generateMaps();
     void setShipFuel(int f);
     int unlockLocation();
+    void buy();
 
 
     // accessors/getters

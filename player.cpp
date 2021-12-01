@@ -108,6 +108,10 @@ void Player::work(){
             {
                 cout << "Invalid input." << endl;
             }
+            catch (const std::out_of_range& e) // Catch error if number is too large
+            {
+                cout << "Invalid input." << endl;
+            }
     } while(!validInput); // Loop until valid number that won't put player over 100 is entered
     creditsEarned = years * income; // Calculate earnings
     money = money + creditsEarned; // Increase player money

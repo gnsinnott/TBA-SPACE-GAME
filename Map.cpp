@@ -92,8 +92,11 @@ int Map::travelTo(string destination, int fuel[], int efficiency){
                     cout << "Entry out of bounds, try again." << endl;
                     return -1;
                 }
-            }catch (const std::invalid_argument& e) { // Error if can't cast to integer
+            }catch (const std::invalid_argument& e) { // Catch error if can't cast to integer
                 cout << "Invalid entry." << endl; 
+                return -1;
+            } catch (const std::out_of_range& e) { // Catch error if number is too large
+                cout << "Invalid entry." << endl;
                 return -1;
             }
         }
