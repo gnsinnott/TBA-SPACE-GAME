@@ -92,6 +92,13 @@ int main(){
                     getline(cin,destination); // Get desired travel destination
                     int fuel[] = {game.getShip().getFuel()}; // Assign current fuel to array variable
                     int travelSuccess = map.travelTo(destination, fuel, game.ship.getGasMileage()); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
+                    if (travelSuccess >= 0){
+                        srand(time(0));
+                        if (rand() % 10 < 7){
+                            Enemy enemyShip = ("Cube", "Square", "Ship", 50, 10, 5);
+                            game.player = enemyShip.attackPlayerShip(game.getPlayer(), game.getShip());
+                        }
+                    }
                     if (travelSuccess == 100){ // Travel to map destination if travel to returns 100, (space on current map)
                         game.ship.setFuel(fuel[0]); // Update ship fuel
                         validLocation = true; // Set valid location to true to exit loop

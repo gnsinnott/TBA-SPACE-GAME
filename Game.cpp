@@ -97,32 +97,28 @@ void Game::newGame(){
     // Set ship stats, will probably be reworked but good enough for testing purposes
     if (ship.getName() == "Falcon"){
         ship.setBaseAttack(5);
-        ship.setAttackRange(1);
-        ship.setDefense(8);
+        ship.setAttackRange(10);
         ship.setFuel(100);
         ship.setGasMileage(1);
         ship.setHp(50);
     }
     else if (ship.getName() == "Serenity"){
-        ship.setBaseAttack(7);
+        ship.setBaseAttack(15);
         ship.setAttackRange(2);
-        ship.setDefense(5);
         ship.setFuel(70);
         ship.setGasMileage(2);
         ship.setHp(40);
     }
     else if (ship.getName() == "Enterprise"){
-        ship.setBaseAttack(7);
+        ship.setBaseAttack(12);
         ship.setAttackRange(0);
-        ship.setDefense(7);
         ship.setFuel(70);
         ship.setGasMileage(1);
         ship.setHp(60);
     }
     else if (ship.getName() == "Atlantia"){
-        ship.setBaseAttack(4);
+        ship.setBaseAttack(15);
         ship.setAttackRange(3);
-        ship.setDefense(5);
         ship.setFuel(200);
         ship.setGasMileage(1);
         ship.setHp(100);
@@ -182,7 +178,7 @@ int Game::unlockLocation(){
     vector <int> undiscoveredLocations; // Vector for undiscovered locations
     // TODO: MORTAL COMBAT!!!!!!!!
     cout << "MORTAL COMBAT!!!!" << endl;
-    Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3, 1);
+    Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3);
     player = enemy.attackPlayer(player);
     for (int i = 0; i < locations.size(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
         if (locations[i].getDiscoveryStatus() == false){
