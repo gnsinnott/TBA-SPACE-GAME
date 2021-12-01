@@ -18,7 +18,7 @@ Player::Player()
     hp = 10;
     baseAttack = 3;
     attackRange = 1;
-    defense = 3;
+    
 }
 Player::Player(string n, int sa)
 {
@@ -57,9 +57,7 @@ void Player::setBaseAttack(int a){
 void Player::setAttackRange(int r){
     attackRange = r;
 }
-void Player::setDefense(int d){
-    defense = d;
-}
+
 void Player::setAge(int a)
 {
     age = a;
@@ -146,9 +144,7 @@ int Player::getbaseAttack(){
 int Player::getAttackRange(){
     return attackRange;
 }
-int Player::getDefense(){
-    return defense;
-}
+
 // this function generates the damage points of an attaks randomly based on Damage = baseAttack +- numbers in attack range
 int Player::attack(){
     int offset;

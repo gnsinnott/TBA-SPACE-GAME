@@ -7,14 +7,14 @@ Enemy::Enemy() {
 
 }
 //constructor
-Enemy::Enemy(string n, string d, string t, int h, int att, int attr, int def){
+Enemy::Enemy(string n, string d, string t, int h, int att, int attr){
     name = n;
     description = d;
     type = t;
     hp = h;
     baseAttack = att;
     attackRange = attr;
-    defense = def;
+    
 }
 //setter
 void Enemy::setName(string n){
@@ -34,9 +34,6 @@ void Enemy::setBaseAttack(int a){
 }
 void Enemy::setAttackRange(int r){
     attackRange = r;
-}
-void Enemy::setDefense(int d){
-    defense = d;
 }
 
 /* This function takes a player object and and Enemy object and has the two objects battle. The Player attacks first. This the player 
@@ -78,8 +75,7 @@ below zero the player wins resulting in a gain of a random amount of money betwe
 inputs- player object, enemy object
 return void
 */ 
-SpaceShip Enemy::attackPlayerShip(Player player, SpaceShip ship){
-
+Player Enemy::attackPlayerShip(Player player, SpaceShip ship){
 
     while(ship.getHp() > 0 && hp > 0)
     {
@@ -100,7 +96,7 @@ SpaceShip Enemy::attackPlayerShip(Player player, SpaceShip ship){
     }
     ship.setHp(10);
     hp = (10);
-    return ship;
+    return player;
 }
 
 //getter
@@ -122,9 +118,7 @@ int Enemy::getbaseAttack() const{
 int Enemy::getAttackRange() const{
     return attackRange;
 }
-int Enemy::getDefense() const{
-    return defense;
-}
+
 int Enemy::attack() const{
     int offset;
     offset = rand() % (2*attackRange+1);

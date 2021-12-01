@@ -16,7 +16,7 @@ class Enemy {
 
     // constructors
     Enemy(); // Default Constructor
-    Enemy(std::string n, std::string d, std::string t, int hp, int att, int attr, int def);
+    Enemy(std::string n, std::string d, std::string t, int hp, int att, int attr);
 
 
     // mutators/setters
@@ -27,7 +27,7 @@ class Enemy {
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
     Player attackPlayer(Player player);
-    SpaceShip attackPlayerShip(Player player, SpaceShip ship);
+    Player attackPlayerShip(Player player, SpaceShip ship);
 
     // accessors/getters
     std::string getName() const;

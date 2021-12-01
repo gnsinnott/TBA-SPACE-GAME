@@ -25,7 +25,6 @@ class Player
     void setAge(int a);
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
-    void setDefense(int defense);
     bool buy(string item, int price);
     void setNumPlanets(int numPlanets);
     void work();
@@ -40,7 +39,6 @@ class Player
     int getHp();
     int getbaseAttack();
     int getAttackRange();
-    int getDefense();
     int attack();
     void displayStats();
     int getNumPlanets();
@@ -55,7 +53,6 @@ class Player
     int hp;
     int baseAttack;
     int attackRange;
-    int defense;
     int numPlanets; 
 };
 #endif
