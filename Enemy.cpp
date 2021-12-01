@@ -65,7 +65,8 @@ Player Enemy::attackPlayer(Player player){
             return player;
         }  
     }
-    player.setHp(20); //Player HP returns to preset value
+    player.setHp(10); //Player HP returns to preset value
+    hp = 10;
     return player;
 }
 /* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enemy object battle. The enemy attacks first. This the enemy
@@ -74,7 +75,7 @@ below zero the player wins resulting in a gain of a random amount of money betwe
 inputs- player object, enemy object
 return void
 */ 
-bool Enemy::attackPlayerShip(Player player, SpaceShip ship){
+SpaceShip Enemy::attackPlayerShip(Player player, SpaceShip ship){
 
 
     while(ship.getHp() > 0 && hp > 0)
@@ -85,19 +86,17 @@ bool Enemy::attackPlayerShip(Player player, SpaceShip ship){
     if(hp < 0)
     {
         cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
-        player.setMoney(player.getMoney() + money);
-        return true;
+        player.setMoney(player.getMoney() + money);  
     } 
     ship.setHp(ship.getHp() - attack() + ship.getDefense());
     if(ship.getHp() < 0)
     {
         cout << "You have lost this battle and $" << money/2 << " was stolen from your ship" <<  endl;
-        player.setMoney(player.getMoney() - money/2);
-        return false;
+        player.setMoney(player.getMoney() - money/2); 
     }  
     }
-    ship.setHp(20);
-    return false;
+    ship.setHp(10);
+    return ship;
 }
 
 //getter

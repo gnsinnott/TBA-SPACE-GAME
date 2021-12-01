@@ -28,7 +28,7 @@ class Enemy {
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
     void setDefense(int defense);
     Player attackPlayer(Player player);
-    bool attackPlayerShip(Player player, SpaceShip ship);
+    SpaceShip attackPlayerShip(Player player, SpaceShip ship);
 
     // accessors/getters
     std::string getName() const;
