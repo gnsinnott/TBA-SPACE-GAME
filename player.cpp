@@ -3,6 +3,7 @@
 //Recitation 112 - Maria Stull
 //Project 3 
 #include <iostream>
+#include <string>
 #include "Player.h"
 
 using namespace std;
@@ -82,7 +83,39 @@ bool Player::buy(string item, int price)
 void Player::setNumPlanets(int np){
     numPlanets = np;
 }
-
+// Function for player to work and earn credits in exchange for years of their life
+void Player::work(){ 
+    string input;
+    int creditsEarned;
+    bool validInput = false;
+    int years;
+    do {
+        years = 0;
+        cout << "How long would you like to work for?" << endl << "For each year you work you will earn " << income << " credits." << endl;
+        getline(cin, input);
+            try // Try to convert string to integer
+            {
+                years = stoi(input);
+                if (years < 0){ // Verify entry is positive integer
+                    cout << "You can't work for negative years, we don't have that technology yet" << endl;
+                }
+                else if(years > 100-age){ // If player will be over 100 by the time they finish working
+                    cout << "You don't have that many years left until retirement." << endl << "You are " << age << " years old and you will retire when you reach 100" << endl;
+                }
+                else {
+                    validInput = true;
+                }
+            }
+            catch(const std::invalid_argument& e) // Catch error if string cannot become an integer
+            {
+                cout << "Invalid input." << endl;
+            }
+    } while(!validInput); // Loop until valid number that won't put player over 100 is entered
+    creditsEarned = years * income; // Calculate earnings
+    money = money + creditsEarned; // Increase player money
+    age = age + years;
+    cout << "You worked for " << years << " years and earned " << creditsEarned << " credits" << endl;
+}
 //getters
 string Player::getName()
 {

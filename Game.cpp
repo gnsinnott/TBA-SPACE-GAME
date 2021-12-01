@@ -305,7 +305,7 @@ void Game::endGame(){
     if (ship.getFuel() <= 0){
         cout << "You've run out of fuel and are stranded in space." << endl;
     }
-    cout << "Game over, you discovered " << player.getNumPlanets() << " planets on your journey." << endl;
+    cout << "Game over, you discovered " << player.getNumPlanets() << " planet(s) on your journey." << endl;
     ofstream fout;
     fout.open("highScores.txt", ios::app);
     string line;

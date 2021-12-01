@@ -45,6 +45,13 @@ int main(){
                     game.unlockLocation();
                     break;
                 }
+                case 1:{ // Shop
+                    break;
+                }
+                case 2:{ // Work
+                    game.player.work();
+                    break;
+                }
                 case 3: // Show player stats
                     game.getPlayer().displayStats(); // Print player stats
                     game.getShip().displayStats(); // Print ship stats

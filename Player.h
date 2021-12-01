@@ -28,6 +28,7 @@ class Player
     void setDefense(int defense);
     bool buy(string item, int price);
     void setNumPlanets(int numPlanets);
+    void work();
     
     
     //getters
