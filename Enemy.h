@@ -26,7 +26,6 @@ class Enemy {
     void setHp(int hp);
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
-    void setDefense(int defense);
     Player attackPlayer(Player player);
     SpaceShip attackPlayerShip(Player player, SpaceShip ship);
 
@@ -37,7 +36,6 @@ class Enemy {
     int getHp() const;
     int getbaseAttack() const;
     int getAttackRange() const;
-    int getDefense() const;
     int attack() const;
 
     private:
@@ -47,7 +45,7 @@ class Enemy {
     int hp;
     int baseAttack;
     int attackRange;
-    int defense;
+
 
 };
 
