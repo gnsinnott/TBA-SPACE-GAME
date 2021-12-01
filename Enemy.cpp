@@ -48,24 +48,28 @@ return void
 Player Enemy::attackPlayer(Player player){
     while(player.getHp() > 0 && hp > 0)
     {
-        hp = (hp - player.attack() + defense); //Enemy HP = Enemy HP  + enemy defense - player attack 
+        int playerAttack = player.attack();
+        cout << "You attack the " << name << " and deal " << playerAttack << " damage." << endl;
+        hp = (hp - playerAttack); //Enemy HP = Enemy HP  + enemy defense - player attack 
         if(hp <= 0)
         {
             int playerBaseAttack = player.getbaseAttack();
-            player.setBaseAttack(playerBaseAttack ++);
+            // player.setBaseAttack(playerBaseAttack + 1);
             cout << "You have won this battle" << endl;
-            return player;
-        } 
-        player.setHp(player.getHp() - attack() + player.getDefense()); // Player HP = Player HP + player defense - enemy attack. 
+        } else {
+            int enemyAttack = attack();
+            cout << "The " << name << " attacks you and deals " << enemyAttack << " damage." << endl;
+            player.setHp(player.getHp() - enemyAttack); // Player HP = Player HP + player defense - enemy attack. 
+        }
         if(player.getHp() <= 0)
         {
             int playerAge = player.getAge();
-            player.setAge(playerAge ++);
+            player.setAge(playerAge + 1);
             cout << "You have lost this battle, it will take you one year to recover." << endl;
-            return player;
         }  
     }
-    player.setHp(20); //Player HP returns to preset value
+    player.setHp(10); //Player HP returns to preset value
+    hp = 10;
     return player;
 }
 /* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enemy object battle. The enemy attacks first. This the enemy

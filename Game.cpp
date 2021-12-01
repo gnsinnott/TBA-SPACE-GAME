@@ -181,8 +181,9 @@ int Game::unlockLocation(){
     srand(time(0));
     vector <int> undiscoveredLocations; // Vector for undiscovered locations
     // TODO: MORTAL COMBAT!!!!!!!!
+    cout << "MORTAL COMBAT!!!!" << endl;
     Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3, 1);
-    enemy.attackPlayer(player);
+    player = enemy.attackPlayer(player);
     for (int i = 0; i < locations.size(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
         if (locations[i].getDiscoveryStatus() == false){
             undiscoveredLocations.push_back(i);
@@ -334,7 +335,9 @@ void Game::endGame(){
             {
                 split(line, delimiter, array, SIZE);
                 playerNames.push_back(array[0]);
+                cout << "Name: " << playerNames.back() << endl;
                 numPlanets.push_back(stoi(array[1]));
+                cout << "Planets: " << numPlanets.back() << endl;
             } 
         }
     fin.close(); //close file
