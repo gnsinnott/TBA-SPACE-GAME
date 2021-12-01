@@ -100,7 +100,7 @@ void Game::newGame(){
         ship.setAttackRange(1);
         ship.setDefense(8);
         ship.setFuel(100);
-        ship.setGasMileage(10);
+        ship.setGasMileage(1);
         ship.setHp(50);
     }
     else if (ship.getName() == "Serenity"){
@@ -108,7 +108,7 @@ void Game::newGame(){
         ship.setAttackRange(2);
         ship.setDefense(5);
         ship.setFuel(70);
-        ship.setGasMileage(5);
+        ship.setGasMileage(2);
         ship.setHp(40);
     }
     else if (ship.getName() == "Enterprise"){
@@ -116,7 +116,7 @@ void Game::newGame(){
         ship.setAttackRange(0);
         ship.setDefense(7);
         ship.setFuel(70);
-        ship.setGasMileage(8);
+        ship.setGasMileage(1);
         ship.setHp(60);
     }
     else if (ship.getName() == "Atlantia"){
@@ -124,7 +124,7 @@ void Game::newGame(){
         ship.setAttackRange(3);
         ship.setDefense(5);
         ship.setFuel(200);
-        ship.setGasMileage(3);
+        ship.setGasMileage(1);
         ship.setHp(100);
     }
     findLocation("C++ System");
@@ -181,6 +181,8 @@ int Game::unlockLocation(){
     srand(time(0));
     vector <int> undiscoveredLocations; // Vector for undiscovered locations
     // TODO: MORTAL COMBAT!!!!!!!!
+    Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3, 1);
+    enemy.attackPlayer(player);
     for (int i = 0; i < locations.size(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
         if (locations[i].getDiscoveryStatus() == false){
             undiscoveredLocations.push_back(i);
@@ -315,6 +317,7 @@ void Game::endGame(){
         }
         fout << player.getName() << ", " << player.getNumPlanets() << endl; 
     ifstream fin;
+    fout.close(); // close file
     vector<string> playerNames;
     vector<int> numPlanets;
     fin.open("highScores.txt");
@@ -355,6 +358,8 @@ void Game::endGame(){
                 }
             }
         }
+    cout << "High Scores" << endl;
+    cout << "-----------" << endl;
     for(int i = 0; i < playerNames.size(); i++)
     {
         cout << playerNames[i] << ", " << numPlanets[i] << endl;

@@ -35,6 +35,8 @@ int main(){
         // string destination = "FA";
         // game.getCurrentMap().travelTo(destination, game.getShip().getFuel());
         if (game.getCurrentLocation().getMapFile() == "Planet"){ // When on a planet
+            cout << "You've landed on the Planet " << game.getCurrentLocation().getName() << endl;
+            cout << game.getCurrentLocation().getDescription() << endl;
             string planetChoices[] = {"Explore", "Shop", "Work", "Check Stats", "Return to Space", "Help"};
             choice = game.printMenu("Planet Options", planetChoices, 6);
             switch (choice)
@@ -89,7 +91,7 @@ int main(){
                     cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
                     getline(cin,destination); // Get desired travel destination
                     int fuel[] = {game.getShip().getFuel()}; // Assign current fuel to array variable
-                    int travelSuccess = map.travelTo(destination, fuel); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
+                    int travelSuccess = map.travelTo(destination, fuel, game.ship.getGasMileage()); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
                     if (travelSuccess == 100){ // Travel to map destination if travel to returns 100, (space on current map)
                         game.ship.setFuel(fuel[0]); // Update ship fuel
                         validLocation = true; // Set valid location to true to exit loop

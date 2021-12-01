@@ -2,4 +2,4 @@ Pandora, 0
 Greg, 2
 Greg, 1
 Old Age Test, 1
-Greggg, 1
+Greg, 0

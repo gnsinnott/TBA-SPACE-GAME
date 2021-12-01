@@ -82,7 +82,7 @@ void Map::setLocation(int i, Location location){
     locations[i] = location;
 }
 // Travel to destination on map, either Location key or coordinate
-int Map::travelTo(string destination, int fuel[]){
+int Map::travelTo(string destination, int fuel[], int efficiency){
     if (destination.size() == 1){ // If destination is location key
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
@@ -100,9 +100,9 @@ int Map::travelTo(string destination, int fuel[]){
                 // cout << "Column: " << tempColumn << endl << "Row: " << tempRow << endl;
                 if (tempColumn < width && tempRow < height){ // Verify coordinates are in range of map
                     int next[] = {tempColumn, tempRow};
-                    int fuelCost = calcFuelCost(playerLoc, next);
-                    if (fuelCost <= fuel[0]){
-                        fuel[0] = fuel[0] - fuelCost;
+                    int fuelCost = (calcDistance(playerLoc, next)*2) / efficiency; // Gets distance and divides by fuel efficiency
+                    if (fuelCost <= fuel[0]){ // Verify enough fuel is left
+                        fuel[0] = fuel[0] - fuelCost; // Update ships fuel
                         setPlayerLoc(tempColumn, tempRow); // Update player location
                         return 100;
                     } else {
@@ -125,19 +125,19 @@ int Map::travelTo(string destination, int fuel[]){
         }
     }
 }
-
-int Map::calcFuelCost(int curr[2], int dest[2]){
-    int x = abs(curr[0] - dest[0]);
-    int y = abs(curr[1] - dest[1]);
-    int distance = sqrt(pow(x,2) + pow(y,2));
-    return distance;   
+// Takes current and destination arrays and calculates distance using pythagorean theorem, return integer
+int Map::calcDistance(int curr[2], int dest[2]){
+    int x = abs(curr[0] - dest[0]); // x distance
+    int y = abs(curr[1] - dest[1]); // y distance
+    int distance = sqrt(pow(x,2) + pow(y,2)); // Pythagorean theorem
+    return distance;
 }
 
 // Generate map from file
 void Map::generateMap(){
     ifstream mapFile; // Create filestream
     std::string line;
-    if(random){
+    if(random){ // Not used, scrapped idea
         // display = "";
     }
     else {
