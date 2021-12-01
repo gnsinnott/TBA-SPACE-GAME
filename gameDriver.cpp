@@ -95,7 +95,7 @@ int main(){
                     if (travelSuccess >= 0){
                         srand(time(0));
                         if (rand() % 10 < 7){
-                            Enemy enemyShip = ("Cube", "Square", "Ship", 50, 10, 5);
+                            Enemy enemyShip("Cube", "Square", "Ship", 50, 10, 5);
                             game.player = enemyShip.attackPlayerShip(game.getPlayer(), game.getShip());
                         }
                     }
