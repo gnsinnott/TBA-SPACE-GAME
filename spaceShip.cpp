@@ -14,17 +14,17 @@ SpaceShip::SpaceShip(){
     hp = 0;
     baseAttack = 0;
     attackRange = 0;
-    defense = 0;
+    
     
 }
-SpaceShip::SpaceShip(string n, int f, int g, int hp, int ba, int ar, int d){
+SpaceShip::SpaceShip(string n, int f, int g, int hp, int ba, int ar){
     name = n;
     fuel = f;
     gasMileage = g;
     hp = hp;
     baseAttack = ba;
     attackRange = ar;
-    defense = d;   
+     
 }
 //setters
 void SpaceShip::setName(string n){
@@ -45,9 +45,7 @@ void SpaceShip::setBaseAttack(int a){
 void SpaceShip::setAttackRange(int r){
     attackRange = r;
 }
-void SpaceShip::setDefense(int d){
-    defense = d;
-}
+
     
 //getters
 string SpaceShip::getName(){
@@ -68,9 +66,7 @@ int SpaceShip::getbaseAttack() const{
 int SpaceShip::getAttackRange() const{
     return attackRange;
 }
-int SpaceShip::getDefense() const{
-    return defense;
-}
+
 // this function generates the damage points of an attaks randomly based on Damage = baseAttack +- numbers in attack range
 int SpaceShip::attack() const{
     int offset;

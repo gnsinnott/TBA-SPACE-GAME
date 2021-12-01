@@ -14,7 +14,7 @@ class SpaceShip
     public:
     //constructor
     SpaceShip();
-    SpaceShip(string n, int f, int g, int hp, int ba, int ar, int d);
+    SpaceShip(string n, int f, int g, int hp, int ba, int ar);
     
     //setters
     void setName(string n); 
@@ -23,7 +23,6 @@ class SpaceShip
     void setHp(int hp);
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
-    void setDefense(int defense);
     //getters
     string getName(); 
     int getFuel();
@@ -31,7 +30,6 @@ class SpaceShip
     int getHp() const;
     int getbaseAttack() const;
     int getAttackRange() const;
-    int getDefense() const;
     int attack() const;
     void displayStats();
 
@@ -42,7 +40,7 @@ class SpaceShip
     int hp;
     int baseAttack;
     int attackRange;
-    int defense;
+    
 
 };
 #endif

@@ -47,7 +47,7 @@ Player Enemy::attackPlayer(Player player){
     {
         int playerAttack = player.attack();
         cout << "You attack the " << name << " and deal " << playerAttack << " damage." << endl;
-        hp = (hp - playerAttack); //Enemy HP = Enemy HP  + enemy defense - player attack 
+        hp = (hp - playerAttack); //Enemy HP = Enemy HP   - player attack 
         if(hp <= 0)
         {
             int playerBaseAttack = player.getbaseAttack();
@@ -56,7 +56,7 @@ Player Enemy::attackPlayer(Player player){
         } else {
             int enemyAttack = attack();
             cout << "The " << name << " attacks you and deals " << enemyAttack << " damage." << endl;
-            player.setHp(player.getHp() - enemyAttack); // Player HP = Player HP + player defense - enemy attack. 
+            player.setHp(player.getHp() - enemyAttack); // Player HP = Player HP  - enemy attack. 
         }
         if(player.getHp() <= 0)
         {
