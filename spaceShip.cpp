@@ -80,6 +80,7 @@ int SpaceShip::attack() const{
 void SpaceShip::displayStats(){
      cout << name << ":" << endl;
      cout << "Ship Fuel (gallons): " << fuel << endl;
+     cout << "Ship Fuel Efficiency: " << gasMileage << endl;
      cout << "Ship Base Attack: " << baseAttack << endl;
  }
 

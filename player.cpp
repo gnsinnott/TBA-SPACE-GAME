@@ -83,7 +83,7 @@ bool Player::buy(string item, int price)
 void Player::setNumPlanets(int np){
     numPlanets = np;
 }
-// Function for player to work and earn credits in exchange for years of their life
+// Function for player to work and earn credits in exchange for years of their life, takes no arguments and returns nothing
 void Player::work(){ 
     string input;
     int creditsEarned;
@@ -97,12 +97,12 @@ void Player::work(){
             {
                 years = stoi(input);
                 if (years < 0){ // Verify entry is positive integer
-                    cout << "You can't work for negative years, we don't have that technology yet" << endl;
+                    cout << "You can't work for negative years, we don't have that technology yet." << endl;
                 }
                 else if(years > 100-age){ // If player will be over 100 by the time they finish working
                     cout << "You don't have that many years left until retirement." << endl << "You are " << age << " years old and you will retire when you reach 100" << endl;
                 }
-                else {
+                else { // Non negative and small enough number means input is valid
                     validInput = true;
                 }
             }
