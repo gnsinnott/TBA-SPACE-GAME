@@ -364,3 +364,24 @@ void Game::endGame(){
         cout << playerNames[i] << ", " << numPlanets[i] << endl;
     }
 }
+SpaceShip Game::buy(Player player, SpaceShip ship) // needs work, can't pass back a ship and player
+{
+    string choices[] ={"gas...$10 per gallon", "dynamite...$1000", "beer...$10"};
+    int option = printMenu("What would you like to buy?", choices, 3);
+    int money = player.getMoney();
+    if(option = 0)
+    { 
+       int numGallons = 0;
+       cout << "How many Gallons would you like to buy?" << endl;
+       cin >> numGallons;
+       if(money <= 10 * numGallons){
+       cout << "You have $ " << money << "." << "You do not have enough money to buy gas" << " \xF0\x9F\x98\x96." << endl;   
+       }
+       else{
+        cout << "You have bought " << numGallons << " of gas, enjoy your journey!" << endl;
+        ship.setFuel(ship.getFuel() + numGallons);
+       }
+       
+    }
+    
+}
