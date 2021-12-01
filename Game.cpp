@@ -7,6 +7,7 @@
 #include<fstream>
 #include<iostream>
 #include<string>
+#include <random>
 using namespace std;
 
 // Default constructor need to evaluate use
@@ -154,21 +155,57 @@ int Game::printMenu(string title, string choices[], int size){
     while(true);
 }
 
+// Takes a string name of a location and finds it in array, sets youAreHere to specified location and if a system updates current game map
 void Game::findLocation(string n){
     for (int i = 0; i < locations.size(); i++){
         if (locations[i].getName() == n){
-            cout << "Location found" << endl;
-            for (int j = 0; j < maps.size(); j++){
-                if (maps[j].getName() == n){
-                    map = maps[j];
-                    cout << "Find location Map: " << map.getName() << endl;
-                    youAreHere = locations[i];
+            if (locations[i].getMapFile() == "Planet"){
+                youAreHere = locations[i];
+            }
+            else {
+                for (int j = 0; j < maps.size(); j++){
+                    if (maps[j].getName() == n){
+                        map = maps[j];
+                        youAreHere = locations[i];
+                    }
                 }
             }
         }
     }
 }
 
+// Unlocks a random location on current map when exploring a planet
+int Game::unlockLocation(){
+    player.setAge(player.getAge() + 1); // Increment age of player by 1
+    srand(time(0));
+    vector <int> undiscoveredLocations; // Vector for undiscovered locations
+    // TODO: MORTAL COMBAT!!!!!!!!
+    for (int i = 0; i < locations.size(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
+        if (locations[i].getDiscoveryStatus() == false){
+            undiscoveredLocations.push_back(i);
+        }
+    }
+    if (undiscoveredLocations.size() == 0 || youAreHere.getExploredStatus()){ // If no locations are left undiscovered reward player with money
+        int money = 100 * ((rand() % 10) +1); // Random amount of money between 100 and 1000
+        cout << "No new information was discovered but you did find artifacts that you were able to sell for " << money << " credits" << endl;
+        player.setMoney(player.getMoney() + money); // Increase player money
+        return 0;
+    }
+    else { // Discover location
+        int newLocation = rand() % undiscoveredLocations.size(); // Random location from array
+        locations[undiscoveredLocations[newLocation]].setDiscovered(true); // Set new location to discovered
+        youAreHere.setExploredStatus(true); // Set current planet to explored
+        
+        cout << "You discovered the location of the " << locations[newLocation].getName() << " planet in this system." << endl;
+        for (int j = 0; j < maps.size(); j++){
+                if (maps[j].getName() == getCurrentMap().getName()){
+                    maps[j].revealLocation(locations[newLocation]);
+                    map = maps[j];
+                }
+            }
+        return 1;
+    }
+}
 SpaceShip Game::getShip(){
     return ship;
 }
@@ -179,7 +216,6 @@ Location Game::getCurrentLocation(){
     return youAreHere;
 }
 Map Game::getCurrentMap(){
-    cout << "Map: " << map.getName() << endl; 
     return map;
 }
 // Sets new location, needs to be reworked

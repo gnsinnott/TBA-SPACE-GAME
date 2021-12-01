@@ -187,6 +187,17 @@ void Map::randomPlayerLoc(){
     flag = setPlayerLoc(x, y);
     } while (!flag);
 }
+
+int Map::revealLocation(Location l){
+    display[l.getYLoc()][l.getXLoc()] = l.getMapKey();
+    for (int i = 0; i < 20; i++){
+        if (locations[i].getName() == l.getName()){
+            locations[i].setDiscovered(true);
+        }
+    }
+    printMap();
+    return 0;
+}
     
 // Set player location on map
 bool Map::setPlayerLoc(int x, int y){

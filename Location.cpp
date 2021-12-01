@@ -51,6 +51,11 @@ void Location::generateLocation(string filename){
         getline(locationFile, line);
         mapKey = line[0];
     }
+    explored = false;
+}
+
+void Location::setExploredStatus(bool e){
+    explored = e;
 }
 // Getters
 string Location::getName() const{
@@ -73,4 +78,7 @@ char Location::getMapKey() const{
 }
 string Location::getMapFile() const{
     return mapFile;
+}
+bool Location::getExploredStatus() const{
+    return explored;
 }

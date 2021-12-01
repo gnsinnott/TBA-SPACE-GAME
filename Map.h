@@ -30,6 +30,7 @@ class Map {
     int travelTo(std::string destination, int f[1]);
     int calcFuelCost(int current[2], int next[2]);
     void randomPlayerLoc();
+    int revealLocation(Location l);
 
 
     // accessors/getters

@@ -2,7 +2,6 @@ Array.txt
 Bjarne.txt
 C++.txt
 Cout.txt
-CS.txt
 Function.txt
 Include.txt
 Java.txt

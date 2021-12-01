@@ -24,6 +24,7 @@ class Location {
     void generateLocation(std::string);
     void setCoordinates(int x, int y);
     void setMapKey(char c);
+    void setExploredStatus(bool);
 
     // accessors/getters
     std::string getName() const;
@@ -33,6 +34,7 @@ class Location {
     int getYLoc() const;
     char getMapKey() const;
     std::string getMapFile() const;
+    bool getExploredStatus() const;
 
     private:
     std::string name;
@@ -44,6 +46,7 @@ class Location {
     bool combat;
     int xLoc;
     int yLoc;
+    bool explored;
     std::string items[5];
     std::string enemies[5];
     std::string events[5];

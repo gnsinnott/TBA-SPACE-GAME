@@ -23,6 +23,7 @@ class Game {
     int generateLocations();
     int generateMaps();
     void setShipFuel(int f);
+    int unlockLocation();
 
 
     // accessors/getters
@@ -42,6 +43,7 @@ class Game {
     // Map map;
 
     private:
+
     const int size = 20;
     vector <Location> locations;
     vector <Map> maps;
