@@ -45,7 +45,7 @@ below zero the player loses resulting in a loss of 1 year on their lifespan.
 inputs- player object, enemy object
 return void
 */ 
-bool Enemy::attackPlayer(Player player){
+Player Enemy::attackPlayer(Player player){
     while(player.getHp() > 0 && hp > 0)
     {
         hp = (hp - player.attack() + defense); //Enemy HP = Enemy HP  + enemy defense - player attack 
@@ -54,7 +54,7 @@ bool Enemy::attackPlayer(Player player){
             int playerBaseAttack = player.getbaseAttack();
             player.setBaseAttack(playerBaseAttack ++);
             cout << "You have won this battle" << endl;
-            return true;
+            return player;
         } 
         player.setHp(player.getHp() - attack() + player.getDefense()); // Player HP = Player HP + player defense - enemy attack. 
         if(player.getHp() <= 0)
@@ -62,11 +62,11 @@ bool Enemy::attackPlayer(Player player){
             int playerAge = player.getAge();
             player.setAge(playerAge ++);
             cout << "You have lost this battle, it will take you one year to recover." << endl;
-            return false;
+            return player;
         }  
     }
     player.setHp(20); //Player HP returns to preset value
-    return false;
+    return player;
 }
 /* This function takes a player object, SpaceShip object, and Enemy object and has the spaceship object and enemy object battle. The enemy attacks first. This the enemy
 attack reduces the spaceship Hp (Health Points) below zero, the enemys wins and the player loses money (between ($0-$50)). Next The SpaceShip attacks, if the spaceship attack reduces the enemy health points 
