@@ -65,6 +65,7 @@ void Game::newGame(){
     cout << "Please enter your player name: " << endl;
     getline(cin, input);
     player.setName(input);
+    player.setNumPlanets(0);
     cout << "Welcome " << player.getName() << " in this game your age matters. You have limited time to complete this game, roughly 100 years." << endl;
     cout << "To earn money you will have to spend time working, the older you start the more money you will make for each year worked. Choose wisely!" << endl;
     do {
@@ -200,6 +201,7 @@ int Game::unlockLocation(){
         for (int j = 0; j < maps.size(); j++){
                 if (maps[j].getName() == getCurrentMap().getName()){
                     maps[j].revealLocation(locations[newLocation]);
+                    player.setNumPlanets(player.getNumPlanets() + 1);
                     map = maps[j];
                 }
             }
@@ -297,6 +299,13 @@ return size;
 /*  This fuction records player scores to highScores.txt and prints out the scores and player names to terminal in descending order. 
 */
 void Game::endGame(){
+    if (player.getAge() >= 100){
+        cout << "You've reached old age and it's time to retire!" << endl;
+    }
+    if (ship.getFuel() <= 0){
+        cout << "You've run out of fuel and are stranded in space." << endl;
+    }
+    cout << "Game over, you discovered " << player.getNumPlanets() << " planets on your journey." << endl;
     ofstream fout;
     fout.open("highScores.txt", ios::app);
     string line;

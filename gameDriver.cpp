@@ -28,6 +28,7 @@ int main(){
     game.newGame(); // Start new game, get's player and ship info
     Map map = game.getCurrentMap();
     loadMap(map);
+    bool quit = false;
     do{
         // Need to implement gameplay loop here
         // Simple menu choice loop test
@@ -121,13 +122,15 @@ int main(){
             case 5: { // Quit game
                 // Record player score
                 cout << "Goodbye you're winner" << endl;
-                return 0;
+                quit = true;
+                break;
             }
             default:
                 break;
             }
         }
     }
-    while(true);
+    while(game.player.getAge() < 100 && game.ship.getFuel() > 0 && !quit);
+    game.endGame();
     return 0;
 }
