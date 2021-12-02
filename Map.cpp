@@ -60,7 +60,7 @@ void Map::setLocation(int i, Location location){
     locations[i] = location;
 }
 // Travel to destination on map, either Location key or coordinate
-int Map::travelTo(string destination, int fuel[], int efficiency){
+int Map::travelTo(string destination, int fuel[], int efficiency, int time[]){
     if (destination.size() == 1){ // If destination is location key
         for (int i = 0; i < locationCount; i++){ // Find key in location array
             if (getLocation(i).getMapKey() == destination[0]){
@@ -78,7 +78,9 @@ int Map::travelTo(string destination, int fuel[], int efficiency){
                 // cout << "Column: " << tempColumn << endl << "Row: " << tempRow << endl;
                 if (tempColumn < width && tempRow < height){ // Verify coordinates are in range of map
                     int next[] = {tempColumn, tempRow};
-                    int fuelCost = (calcDistance(playerLoc, next)*2) / efficiency; // Gets distance and divides by fuel efficiency
+                    int distance = calcDistance(playerLoc, next);
+                    time[0] = distance * 1;
+                    int fuelCost = (distance*2) / efficiency; // Gets distance and divides by fuel efficiency
                     if (fuelCost <= fuel[0]){ // Verify enough fuel is left
                         fuel[0] = fuel[0] - fuelCost; // Update ships fuel
                         setPlayerLoc(tempColumn, tempRow); // Update player location
