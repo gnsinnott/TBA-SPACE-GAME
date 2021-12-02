@@ -8,6 +8,8 @@ or
 you can compile by typing g++ -std=c++11 -o game.out Game.cpp Location.cpp Map.cpp 
 player.cpp spaceShip.cpp Enemy.cpp gameDriver.cpp in the command line and then ./game.out
 
+POSSIBLE RUNTIME INCONSISTENCY
+************************
 We found an issue where the same compiled program ran differently on two different mac os environments
 It worked on OS Monterey(Clang version 13) but not Catalina(Clang version 12)
 Even when compiled on Monterey and executed on Catalina the map doesn't work correctly
@@ -16,6 +18,8 @@ An example of what the map should look like is included in this zip file "Map Re
 If it doesn't run correctly you will see blank space instead of stars
 When maps are initially created they print correctly but when the current map in the game is assigned to a map
 from the vector of maps in the game some information such as the display array is "dropped" for lack of a better term
+************************
+
 ------------------------
 DEPENDENCIES
 ------------------------
