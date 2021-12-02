@@ -374,7 +374,7 @@ void Game::endGame(){
 // Function that allows player to buy things when on planets
 void Game::buy()
 {
-    string choices[] ={"gas...$100 per gallon", "dynamite...$1000", "beer...$10"}; // Items to buy
+    string choices[] ={"gas...$100 per gallon", "dynamite...$5000", "beer...$10,000"}; // Items to buy
     int option = printMenu("What would you like to buy?", choices, 3); // Generate menu to get player choice
     int money = player.getMoney();
     string input;
@@ -390,7 +390,7 @@ void Game::buy()
                     if (numGallons < 0){
                         cout << "You can't buy negative fuel." << endl;
                     }
-                    else if(money <= 1000 * numGallons){ // Check if player does not have enough money
+                    else if(money <= 100 * numGallons){ // Check if player does not have enough money
                         cout << "You have $ " << money << "." << "You do not have enough credits to buy this much gas" << " \xF0\x9F\x98\x96." << endl;  
                     }
                     else {
@@ -412,8 +412,23 @@ void Game::buy()
                 }
         } while(!validChoice); // Loops until valid purchase amount is entered
     } else if(option == 1){
-
+    if(money >= 5000){
+    cout << "You have bought dynamite, destroy your enemies!" << endl; 
+    ship.setBaseAttack(ship.getbaseAttack() + 1); 
+    player.setMoney(player.getMoney() - 5000); 
+    }
+    else{
+    cout << "You don't have enough money for this transaction!" << endl; 
+    }
     } else if(option == 2){
-
+    if(money >= 5000){
+    cout << "You have beer, feel refreshed!" << endl;
+    ship.setBaseAttack(ship.getbaseAttack() + 1);
+    ship.setAttackRange(ship.getAttackRange() + 2); 
+    player.setMoney(player.getMoney() - 10000);
+    }
+    else{
+    cout << "You don't have enough money for this transaction!" << endl;   
+    } 
     }
 }
