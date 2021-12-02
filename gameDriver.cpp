@@ -73,14 +73,13 @@ int main(){
                     cout << "Return to Space: Self explanatory, return to your ship and go back into space." << endl;
                     cout << "Help: Um... well your here." << endl << endl;
                     break;
-                
                 default:
                     break;
             }
         }
         else {
-            string spaceChoices[] = {"Travel", "Check Stats", "Option 3", "Option 4", "option 5",  "Quit"};
-            choice = game.printMenu("Space Options", spaceChoices, 6);
+            string spaceChoices[] = {"Travel", "Check Stats", "Quit"};
+            choice = game.printMenu("Space Options", spaceChoices, 3);
             cout << "You chose to " << spaceChoices[choice] << " good luck!" << endl;
             switch (choice)
             {
@@ -92,10 +91,12 @@ int main(){
                     cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
                     getline(cin,destination); // Get desired travel destination
                     int fuel[] = {game.getShip().getFuel()}; // Assign current fuel to array variable
-                    int travelSuccess = map.travelTo(destination, fuel, game.ship.getGasMileage()); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
+                    int duration[] = {}; // Array to get time passed during travel
+                    int travelSuccess = map.travelTo(destination, fuel, game.ship.getGasMileage(), duration); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
                     if (travelSuccess >= 0){
                         srand(time(0));
                         if (rand() % 10 < 7){
+                            game.player.setAge(game.player.getbaseAttack() + duration[0]);
                             Enemy enemyShip("Cube", "Square", "Ship", 50, 10, 5);
                             game.player = enemyShip.attackPlayerShip(game.getPlayer(), game.getShip());
                         }
@@ -127,18 +128,9 @@ int main(){
                 game.getShip().displayStats(); // Print ship stats
                 break;
             }
-            case 2: { // Option 3
-
-            }
-            case 3: { // Option 4
-
-            }
-            case 4: { // Option 5
-
-            }
-            case 5: { // Quit game
+            case 2: { // Quit game
                 // Record player score
-                cout << "Goodbye you're winner" << endl;
+                cout << "You're winner !" << endl;
                 quit = true;
                 break;
             }
