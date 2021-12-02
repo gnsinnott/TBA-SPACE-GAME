@@ -9,8 +9,7 @@
 using namespace std;
 
 //constructor
-Player::Player()
-{
+Player::Player(){
     name = "";
     startingAge = 0;
     age = startingAge;
@@ -20,8 +19,7 @@ Player::Player()
     attackRange = 1;
     
 }
-Player::Player(string n, int sa)
-{
+Player::Player(string n, int sa){
     name = "";
     startingAge = sa;
     age = sa;
@@ -29,23 +27,19 @@ Player::Player(string n, int sa)
 }
 
 //setters
-void Player::setName(string n)
-{
+void Player::setName(string n){
     name = n;
 } 
-void Player::setStartingAge(int sa)
-{
+void Player::setStartingAge(int sa){
     startingAge = sa;
     age = sa;
     money = sa * 100;
     income = sa * 10;
 }
-void Player::setMoney(int m)
-{
+void Player::setMoney(int m){
     money = m;
 }
-void Player::setIncome(int a)
-{
+void Player::setIncome(int a){
     income = a * 10;
 }
 void Player::setHp(int h){
@@ -57,26 +51,8 @@ void Player::setBaseAttack(int a){
 void Player::setAttackRange(int r){
     attackRange = r;
 }
-
-void Player::setAge(int a)
-{
+void Player::setAge(int a){
     age = a;
-}
-bool Player::buy(string item, int price)
-{
-    if(price > money)
-    { 
-       cout << "You have $ " << money << "." << endl;
-       cout << "You do not have enough money to buy " << item << " \xF0\x9F\x98\x96." << endl;
-       return false;
-    }
-    else
-    {
-        cout << "You bought " << item << "." << endl;
-        money = (money - price);
-        cout << "You have $ " << money << "." << endl;
-        return true;  
-    }
 }
 void Player::setNumPlanets(int np){
     numPlanets = np;
