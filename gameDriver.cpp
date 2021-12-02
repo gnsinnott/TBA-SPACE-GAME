@@ -91,7 +91,7 @@ int main(){
                     cout << "Where would you like to go?" << endl << "You can enter a location legend key or a custom coordinate. (i.e. A2)" << endl;
                     getline(cin,destination); // Get desired travel destination
                     int fuel[] = {game.getShip().getFuel()}; // Assign current fuel to array variable
-                    int duration[] = {}; // Array to get time passed during travel
+                    int duration[] = {0}; // Array to get time passed during travel
                     int travelSuccess = map.travelTo(destination, fuel, game.ship.getGasMileage(), duration); // Gets back result of travel and array of fuel is passed by reference so we can update ship fuel after travel
                     if (travelSuccess >= 0){
                         srand(time(0));

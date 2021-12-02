@@ -17,11 +17,11 @@ SpaceShip::SpaceShip(){
     
     
 }
-SpaceShip::SpaceShip(string n, int f, int g, int hp, int ba, int ar){
+SpaceShip::SpaceShip(string n, int f, int g, int h, int ba, int ar){
     name = n;
     fuel = f;
     gasMileage = g;
-    hp = hp;
+    hp = h;
     baseAttack = ba;
     attackRange = ar;
      

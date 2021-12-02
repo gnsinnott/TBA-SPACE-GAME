@@ -50,8 +50,6 @@ Player Enemy::attackPlayer(Player player){
         hp = (hp - playerAttack); //Enemy HP = Enemy HP   - player attack 
         if(hp <= 0)
         {
-            int playerBaseAttack = player.getbaseAttack();
-            // player.setBaseAttack(playerBaseAttack + 1);
             cout << "You have won this battle" << endl;
         } else {
             int enemyAttack = attack();
