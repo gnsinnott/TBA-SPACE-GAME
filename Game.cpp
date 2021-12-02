@@ -338,9 +338,7 @@ void Game::endGame(){
             {
                 split(line, delimiter, array, SIZE);
                 playerNames.push_back(array[0]);
-                cout << "Name: " << playerNames.back() << endl;
                 numPlanets.push_back(stoi(array[1]));
-                cout << "Planets: " << numPlanets.back() << endl;
             } 
         }
     fin.close(); //close file
@@ -412,23 +410,23 @@ void Game::buy()
                 }
         } while(!validChoice); // Loops until valid purchase amount is entered
     } else if(option == 1){
-    if(money >= 5000){
-    cout << "You have bought dynamite, destroy your enemies!" << endl; 
-    ship.setBaseAttack(ship.getbaseAttack() + 1); 
-    player.setMoney(player.getMoney() - 5000); 
-    }
-    else{
-    cout << "You don't have enough money for this transaction!" << endl; 
-    }
-    } else if(option == 2){
-    if(money >= 5000){
-    cout << "You have beer, feel refreshed!" << endl;
-    ship.setBaseAttack(ship.getbaseAttack() + 1);
-    ship.setAttackRange(ship.getAttackRange() + 2); 
-    player.setMoney(player.getMoney() - 10000);
-    }
-    else{
-    cout << "You don't have enough money for this transaction!" << endl;   
-    } 
+        if(money >= 5000){
+            cout << "You have bought dynamite, destroy your enemies!" << endl; 
+            ship.setBaseAttack(ship.getbaseAttack() + 1); 
+            player.setMoney(player.getMoney() - 5000); 
+        }
+        else{
+            cout << "You don't have enough money for this transaction!" << endl; 
+        }
+        } else if(option == 2){
+            if(money >= 10000){
+            cout << "You have beer, feel refreshed!" << endl;
+            player.setBaseAttack(player.getbaseAttack() + 1);
+            player.setAttackRange(player.getAttackRange() + 2); 
+            player.setMoney(player.getMoney() - 10000);
+        }
+        else{
+            cout << "You don't have enough money for this transaction!" << endl;   
+        } 
     }
 }
