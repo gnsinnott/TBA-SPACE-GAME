@@ -7,12 +7,11 @@
 #include<fstream>
 #include<iostream>
 #include<string>
-#include <random>
+#include<random>
 using namespace std;
 
 // Default constructor need to evaluate use
 Game::Game(){
-
 }
 
 // Main menu
@@ -74,7 +73,7 @@ void Game::newGame(){
         try // Try to convert string to integer
         {
             age = stoi(input);
-            if (age > 15 && age < 96){ // Verify age is in appropriate range
+            if (age > 24 && age < 96){ // Verify age is in appropriate range
                 player.setStartingAge(age);
                 validAge = true;
             } else {
@@ -185,7 +184,6 @@ int Game::unlockLocation(){
     player.setAge(player.getAge() + 1); // Increment age of player by 1
     srand(time(0));
     vector <int> undiscoveredLocations; // Vector for undiscovered locations
-    // TODO: MORTAL COMBAT!!!!!!!!
     cout << "MORTAL COMBAT!!!!" << endl;
     Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3);
     player = enemy.attackPlayer(player);
@@ -392,7 +390,7 @@ void Game::buy()
                     if (numGallons < 0){
                         cout << "You can't buy negative fuel." << endl;
                     }
-                    else if(money <= 100 * numGallons){ // Check if player does not have enough money
+                    else if(money <= 1000 * numGallons){ // Check if player does not have enough money
                         cout << "You have $ " << money << "." << "You do not have enough credits to buy this much gas" << " \xF0\x9F\x98\x96." << endl;  
                     }
                     else {

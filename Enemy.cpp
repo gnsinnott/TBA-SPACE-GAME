@@ -79,20 +79,23 @@ Player Enemy::attackPlayerShip(Player player, SpaceShip ship){
 
     while(ship.getHp() > 0 && hp > 0)
     {
-    srand(time(0));
-    int money = rand();
-    hp = (hp - ship.attack());
-    if(hp < 0)
-    {
-        cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
-        player.setMoney(player.getMoney() + money);  
-    } 
-    ship.setHp(ship.getHp() - attack());
-    if(ship.getHp() < 0)
-    {
-        cout << "You have lost this battle and $" << money/2 << " was stolen from your ship" <<  endl;
-        player.setMoney(player.getMoney() - money/2); 
-    }  
+        srand(time(0));
+        int money = rand() % 10 * 100;
+        hp = (hp - ship.attack());
+        if(hp < 0)
+        {
+            cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
+            player.setMoney(player.getMoney() + money);  
+        } 
+        ship.setHp(ship.getHp() - attack());
+        if(ship.getHp() < 0)
+        {
+            cout << "You have lost this battle and $" << money/2 << " was stolen from your ship" <<  endl;
+            player.setMoney(player.getMoney() - money/2); 
+            if (player.getMoney() < 0){
+                player.setMoney(0);
+            }
+        }  
     }
     ship.setHp(10);
     hp = (10);
