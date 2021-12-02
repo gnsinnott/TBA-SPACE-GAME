@@ -203,7 +203,7 @@ int Game::unlockLocation(){
         locations[undiscoveredLocations[newLocation]].setDiscovered(true); // Set new location to discovered
         youAreHere.setExploredStatus(true); // Set current planet to explored
         
-        cout << "You discovered the location of the " << locations[newLocation].getName() << " planet in this system." << endl;
+        cout << "You discovered the location of the " << locations[newLocation].getName() << " planet in this system. \xF0\x9F\x94\xAD" << endl;
         for (int j = 0; j < maps.size(); j++){
                 if (maps[j].getName() == getCurrentMap().getName()){
                     maps[j].revealLocation(locations[newLocation]);
@@ -411,7 +411,7 @@ void Game::buy()
         } while(!validChoice); // Loops until valid purchase amount is entered
     } else if(option == 1){
         if(money >= 5000){
-            cout << "You have bought dynamite, destroy your enemies!" << endl; 
+            cout << "You have bought dynamite, destroy your enemies! \xF0\x9F\x92\xA3 " << endl; 
             ship.setBaseAttack(ship.getbaseAttack() + 1); 
             player.setMoney(player.getMoney() - 5000); 
         }
