@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// Takes a map variable and prints the map and the legend for it
 void loadMap(Map map){
     map.printMap();
     map.printLegend(map.getPlayerMarked());
@@ -139,7 +140,7 @@ int main(){
             }
         }
     }
-    while(game.player.getAge() < 100 && game.ship.getFuel() > 0 && !quit);
+    while(game.player.getAge() < 100 && game.ship.getFuel() > 0 && !quit); // End game conditions
     game.endGame();
     return 0;
 }

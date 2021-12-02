@@ -17,6 +17,7 @@ SpaceShip::SpaceShip(){
     
     
 }
+// Parametrized spaceship constructor
 SpaceShip::SpaceShip(string n, int f, int g, int h, int ba, int ar){
     name = n;
     fuel = f;
@@ -73,6 +74,7 @@ int SpaceShip::attack() const{
     offset = rand() % (2*attackRange+1);
     return (baseAttack-attackRange+offset);
 }
+// Prints space ships stats
 void SpaceShip::displayStats(){
      cout << name << ":" << endl;
      cout << "Ship Fuel (gallons): " << fuel << endl;

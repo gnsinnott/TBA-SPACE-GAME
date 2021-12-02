@@ -126,7 +126,7 @@ void Game::newGame(){
         ship.setGasMileage(1);
         ship.setHp(100);
     }
-    findLocation("C++ System");
+    findLocation("C++ System"); // Set initial system for game creation
 }
 // Prints menu from array of strings, takes title, array of choices and array size
 int Game::printMenu(string title, string choices[], int size){
@@ -164,11 +164,11 @@ int Game::printMenu(string title, string choices[], int size){
 void Game::findLocation(string n){
     for (int i = 0; i < locations.size(); i++){
         if (locations[i].getName() == n){
-            if (locations[i].getMapFile() == "Planet"){
+            if (locations[i].getMapFile() == "Planet"){ // For planets only update location not map
                 youAreHere = locations[i];
             }
             else {
-                for (int j = 0; j < maps.size(); j++){
+                for (int j = 0; j < maps.size(); j++){ // Updated map and location if new system
                     if (maps[j].getName() == n){
                         map = maps[j];
                         youAreHere = locations[i];
@@ -214,16 +214,16 @@ int Game::unlockLocation(){
     //         }
     //     return 1;
     // }
-    if (player.getNumPlanets() == 6 || youAreHere.getExploredStatus()){
+    if (player.getNumPlanets() == 6 || youAreHere.getExploredStatus()){ // If all planets discovered or allready explored current planet
         int money = 100 * ((rand() % 10) +1); // Random amount of money between 100 and 1000
         cout << "It seems you have found everything in this sector" << endl;
         cout << "No new information was discovered but you did find artifacts that you were able to sell for " << money << " credits" << endl;
         player.setMoney(player.getMoney() + money); // Increase player money
         return 0;
     } else {
-        int nextPlanet = player.getNumPlanets()+1;
-        map.revealLocation(map.locations[nextPlanet]);
-        youAreHere.setExploredStatus(true);
+        int nextPlanet = player.getNumPlanets()+1; // Get index of next planet to discover
+        map.revealLocation(map.locations[nextPlanet]); // Reveal planet
+        youAreHere.setExploredStatus(true); // Set current planet location explored status to true
         cout << "You discovered the location of the " << map.locations[nextPlanet].getName() << " planet in this system. \xF0\x9F\x94\xAD" << endl;
         player.setNumPlanets(player.getNumPlanets() + 1);
         map = maps[0];
@@ -390,7 +390,7 @@ void Game::endGame(){
 // Function that allows player to buy things when on planets
 void Game::buy()
 {
-    string choices[] ={"gas...$100 per gallon", "dynamite...$5000", "beer...$10,000"}; // Items to buy
+    string choices[] ={"gas...$100 per gallon", "dynamite...$5000 (increases ship damage)", "beer...$10,000(increases player damage)"}; // Items to buy
     int option = printMenu("What would you like to buy?", choices, 3); // Generate menu to get player choice
     int money = player.getMoney();
     string input;

@@ -160,29 +160,31 @@ void Map::generateMap(){
     }
     randomPlayerLoc();
 } 
+// Starts player at random location on map
 void Map::randomPlayerLoc(){
     srand(time(0));
     bool flag = false;
     do
     {
-    int x = rand()% width;
-    int y = rand()% height;
-    flag = setPlayerLoc(x, y);
+        int x = rand()% width;
+        int y = rand()% height;
+        flag = setPlayerLoc(x, y); // Returns true if valid location
     } while (!flag);
 }
 
+// Takes a location and sets the location on the map to discovered
 int Map::revealLocation(Location l){
-    display[l.getYLoc()][l.getXLoc()] = l.getMapKey();
-    for (int i = 0; i < 20; i++){
+    display[l.getYLoc()][l.getXLoc()] = l.getMapKey(); // Character that represents location on map set at specified coordinates
+    for (int i = 0; i < 20; i++){ // Find location by name and set discovered to true
         if (locations[i].getName() == l.getName()){
             locations[i].setDiscovered(true);
         }
     }
-    printMap();
+    printMap(); // Print new explored map
     return 0;
 }
     
-// Set player location on map
+// Takes x location integer and y location integer and sets player location on map to xy coordinates
 bool Map::setPlayerLoc(int x, int y){
     if (display[y][x] == filler){ // Check if specified destination is empty space and not a marked location
         display[playerLoc[1]][playerLoc[0]] = filler; // Fill in previous player coordinates with filler character 
@@ -196,7 +198,7 @@ bool Map::setPlayerLoc(int x, int y){
         return 0;
     }
 }
-
+// Return bool status if player is marked on map
 bool Map::getPlayerMarked(){
     return playerMarked;
 }
@@ -257,7 +259,7 @@ void Map::printLegend(bool playerMarked) const{
     // Iterate over locations and print name and key
     for (int i = 0; i < locationCount; i++){
         if (locations[i].getDiscoveryStatus()) {
-            cout << locations[i].getMapKey() << " = " << locations[i].getName() << endl;
+            cout << locations[i].getMapKey() << " = " << locations[i].getName() << endl; // Print visible locations and their map key
         }
     }
     if (playerMarked) { // If player is visible add player to legend
@@ -281,6 +283,7 @@ int Map::getWidth() const{
 int Map::getHeight() const{
     return height;
 }
+// Get name of map as string
 string Map::getName() const{
     return name;
 }

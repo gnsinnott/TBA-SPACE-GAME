@@ -91,7 +91,7 @@ void Player::work(){
     } while(!validInput); // Loop until valid number that won't put player over 100 is entered
     creditsEarned = years * income; // Calculate earnings
     money = money + creditsEarned; // Increase player money
-    age = age + years;
+    age = age + years; // Increase player age
     cout << "You worked for " << years << " years and earned " << creditsEarned << " credits" << endl;
 }
 //getters
@@ -131,13 +131,14 @@ int Player::attack(){
     offset = rand() % (2*attackRange+1);
     return (max(baseAttack-attackRange+offset,0));
 }
- void Player::displayStats()
- {
-     cout << name << ":" << endl;
-     cout << "Player Age: " << age << endl;
-     cout << "Player Money: $" << money << endl;
-     cout << "Player Base Attack: " << baseAttack << endl;
- }
- int Player::getNumPlanets(){
- return numPlanets;
- }
+// Prints player stats
+void Player::displayStats(){
+    cout << name << ":" << endl;
+    cout << "Player Age: " << age << endl;
+    cout << "Player Money: $" << money << endl;
+    cout << "Player Base Attack: " << baseAttack << endl;
+}
+// Returns number of planets player has discovered as int
+int Player::getNumPlanets(){
+    return numPlanets;
+}

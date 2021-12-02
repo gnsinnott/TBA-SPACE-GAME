@@ -35,6 +35,7 @@ void Location::generateLocation(string filename){
     string line;
     locationFile.open("locations/" + filename); // Open file for location
     if (locationFile.is_open()){ // Check if file can be opened, sets location variables from file lines
+        // Go through file line by line assigning to location variables in specified order
         getline(locationFile, name);
         getline(locationFile, description);
         getline(locationFile, mapFile);
