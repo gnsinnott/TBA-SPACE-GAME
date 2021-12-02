@@ -153,7 +153,7 @@ int Player::getAttackRange(){
 int Player::attack(){
     int offset;
     offset = rand() % (2*attackRange+1);
-    return (baseAttack-attackRange+offset);
+    return (max(baseAttack-attackRange+offset,0));
 }
  void Player::displayStats()
  {
