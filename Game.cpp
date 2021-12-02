@@ -187,32 +187,53 @@ int Game::unlockLocation(){
     cout << "MORTAL COMBAT!!!!" << endl;
     Enemy enemy("Blob", "Ugly", "Space", 20, 3, 3);
     player = enemy.attackPlayer(player);
-    for (int i = 0; i < locations.size(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
-        if (locations[i].getDiscoveryStatus() == false){
-            undiscoveredLocations.push_back(i);
-        }
-    }
-    if (undiscoveredLocations.size() == 0 || youAreHere.getExploredStatus()){ // If no locations are left undiscovered reward player with money
+    // for (int i = 0; i < map.getLocationCount(); i++){ // Iterate over locations and any that are undiscovered get added to undiscoveredLocations vector
+    //     if (map.locations[i].getDiscoveryStatus() == false){
+    //         undiscoveredLocations.push_back(i);
+    //     }
+    // }
+    // if (undiscoveredLocations.size() == 0 || youAreHere.getExploredStatus()){ // If no locations are left undiscovered reward player with money
+    //     int money = 100 * ((rand() % 10) +1); // Random amount of money between 100 and 1000
+    //     cout << "No new information was discovered but you did find artifacts that you were able to sell for " << money << " credits" << endl;
+    //     player.setMoney(player.getMoney() + money); // Increase player money
+    //     return 0;
+    // }
+    // else { // Discover location
+    //     int newLocation = rand() % undiscoveredLocations.size();// Random location from array
+    //     int revealIndex = undiscoveredLocations.at(newLocation);
+    //     map.locations[revealIndex].setDiscovered(true); // Set new location to discovered
+    //     youAreHere.setExploredStatus(true); // Set current planet to explored
+        
+    //     cout << "You discovered the location of the " << map.locations[newLocation].getName() << " planet in this system. \xF0\x9F\x94\xAD" << endl;
+    //     for (int j = 0; j < maps.size(); j++){
+    //             if (maps[j].getName() == getCurrentMap().getName()){
+    //                 maps[j].revealLocation(locations[newLocation]);
+    //                 player.setNumPlanets(player.getNumPlanets() + 1);
+    //                 map = maps[j];
+    //             }
+    //         }
+    //     return 1;
+    // }
+    if (player.getNumPlanets() == 6){
         int money = 100 * ((rand() % 10) +1); // Random amount of money between 100 and 1000
+        cout << "It seems you have found everything in this sector" << endl;
         cout << "No new information was discovered but you did find artifacts that you were able to sell for " << money << " credits" << endl;
         player.setMoney(player.getMoney() + money); // Increase player money
-        return 0;
-    }
-    else { // Discover location
-        int newLocation = rand() % undiscoveredLocations.size(); // Random location from array
-        locations[undiscoveredLocations[newLocation]].setDiscovered(true); // Set new location to discovered
-        youAreHere.setExploredStatus(true); // Set current planet to explored
-        
-        cout << "You discovered the location of the " << locations[newLocation].getName() << " planet in this system. \xF0\x9F\x94\xAD" << endl;
+    return 0;
+    } else {
+        int nextPlanet = player.getNumPlanets()+1;
+        map.revealLocation(map.locations[nextPlanet]);
+        cout << "You discovered the location of the " << map.locations[nextPlanet].getName() << " planet in this system. \xF0\x9F\x94\xAD" << endl;
         for (int j = 0; j < maps.size(); j++){
-                if (maps[j].getName() == getCurrentMap().getName()){
-                    maps[j].revealLocation(locations[newLocation]);
-                    player.setNumPlanets(player.getNumPlanets() + 1);
-                    map = maps[j];
-                }
+            if (maps[j].getName() == getCurrentMap().getName()){
+                maps[j].revealLocation(map.locations[nextPlanet]);
+                player.setNumPlanets(player.getNumPlanets() + 1);
+                map = maps[j];
             }
+        }
         return 1;
     }
+    
 }
 SpaceShip Game::getShip(){
     return ship;

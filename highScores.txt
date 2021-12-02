@@ -9,3 +9,7 @@ asfas, 1
 asfadsf, 1
 OLD AGE, 1
 Us, 1
+Gregory, 0
+afdasf, 1
+sdadf, 5
+gasd, 6

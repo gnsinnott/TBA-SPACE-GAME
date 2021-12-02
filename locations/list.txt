@@ -1,10 +1,8 @@
+Cout.txt
 Array.txt
 Bjarne.txt
-C++.txt
-Cout.txt
-Function.txt
 Include.txt
-Java.txt
 Main.txt
 Object.txt
 Std.txt
+C++.txt
