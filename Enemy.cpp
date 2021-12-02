@@ -62,7 +62,7 @@ Player Enemy::attackPlayer(Player player){
         {
             int playerAge = player.getAge();
             player.setAge(playerAge + 1);
-            cout << "You have lost this battle, it will take you one year to recover." << endl;
+            cout << "You have lost this battle, it will take you one year to recover. \xF0\x9F\x98\xAB" << endl;
         }  
     }
     player.setHp(10); //Player HP returns to preset value
@@ -84,7 +84,7 @@ Player Enemy::attackPlayerShip(Player player, SpaceShip ship){
         hp = (hp - ship.attack());
         if(hp < 0)
         {
-            cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << endl;
+            cout << "You have won this battle and scavenged $"<< money <<" from the enemies ship." << "\xF0\x9F\x92\xB0" << endl;
             player.setMoney(player.getMoney() + money);  
         } 
         ship.setHp(ship.getHp() - attack());

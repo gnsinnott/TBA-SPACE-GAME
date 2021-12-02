@@ -306,7 +306,7 @@ return size;
 */
 void Game::endGame(){
     if (player.getAge() >= 100){
-        cout << "You've reached old age and it's time to retire!" << endl;
+        cout << "You've reached old age and it's time to retire!" << " \xF0\x9F\x8F\x86" << endl;
     }
     if (ship.getFuel() <= 0){
         cout << "You've run out of fuel and are stranded in space." << endl;
@@ -420,7 +420,7 @@ void Game::buy()
         }
         } else if(option == 2){
             if(money >= 10000){
-            cout << "You have beer, feel refreshed!" << endl;
+            cout << "You have beer, feel refreshed!" <<" \xF0\x9F\x8D\xBB" << endl;
             player.setBaseAttack(player.getbaseAttack() + 1);
             player.setAttackRange(player.getAttackRange() + 2); 
             player.setMoney(player.getMoney() - 10000);

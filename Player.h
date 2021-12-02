@@ -25,7 +25,6 @@ class Player
     void setAge(int a);
     void setBaseAttack(int attack);
     void setAttackRange(int range); // Damage = baseAttack +- numbers in range
-    bool buy(string item, int price);
     void setNumPlanets(int numPlanets);
     void work();
     
