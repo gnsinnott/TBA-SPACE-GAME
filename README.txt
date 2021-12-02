@@ -29,4 +29,4 @@ November 24th 2021
 ABOUT THIS PROJECT
 ------------------------
 This project implements a game that allows a player to travel through space on a spaceship of there choosing 
-and discover new planets.
+and discover new planets. The player has a hundred year lifespan to explore space and after aging past that point they retire. 
